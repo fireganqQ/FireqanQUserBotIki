@@ -65,7 +65,7 @@ async def _(block):
 
 #===============================================================================
 
-SEBEP=["Sanane Canım İstedi!!", " ", "Dostum Bana Yazmayı Kes!!"]
+SEBEP=["Sanane Canım İstedi!!", " ", "Dostum Bana Yazmayı Kes!!", "Seni Sevmiyorum O yüzden Engeli Hakettin!!"]
 
 @register(outgoing=True, pattern=".block$")
 async def _(block):
@@ -73,7 +73,7 @@ async def _(block):
         reply= await block.get_reply_message()
         r_user= await block.client.get_entity(reply.from_id)
         id = r_user.id
-        if r_user.id == "1340915968":
+        if r_user.id == WHITELIST:
             await block.edit("`Hayır dostum! @fireganqQ 'ı Engellemeyeceğim!!`")
             return
 
@@ -89,7 +89,7 @@ async def _(block):
         await block.client(BlockRequest(r_user.id))
         await block.edit(f"**#ENGELLENDI**\n`Kullancı: `{mention}\n`Sebebi: {random.choice(SEBEP)}`")
     else:
-        if block.chat_id == "1340915968":
+        if block.chat_id == WHITELIST:
             await block.edit(
                 "`Hayır dostum! @fireganqQ'ı engellemeyeceğim!!`"
             )
