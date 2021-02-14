@@ -17,7 +17,7 @@ async def _(block):
         reply= await block.get_reply_message()
         r_user= await block.client.get_entity(reply.from_id)
         
-        if r_user.id == WHITELIST:
+        if r_user.id in WHITELIST:
             await block.edit("`Hayır dostum! @fireganqQ 'ı Engellemeyeceğim!!`")
             return
         id = r_user.id
@@ -33,7 +33,7 @@ async def _(block):
         await block.client(BlockRequest(r_user.id))
         await block.edit(f"**#ENGELLENDI**\n`Kullancı: `{mention}\n`Sebebi: {sebep}`")
     else:
-        if block.chat_id == WHITELIST:
+        if block.chat_id in WHITELIST:
             await block.edit(
                 "`Hayır dostum! @fireganqQ'ı engellemeyeceğim!!`"
             )
@@ -73,7 +73,7 @@ async def _(block):
         reply= await block.get_reply_message()
         r_user= await block.client.get_entity(reply.from_id)
         id = r_user.id
-        if r_user.id == WHITELIST:
+        if r_user.id in WHITELIST:
             await block.edit("`Hayır dostum! @fireganqQ 'ı Engellemeyeceğim!!`")
             return
 
@@ -89,7 +89,7 @@ async def _(block):
         await block.client(BlockRequest(r_user.id))
         await block.edit(f"**#ENGELLENDI**\n`Kullancı: `{mention}\n`Sebebi: {random.choice(SEBEP)}`")
     else:
-        if block.chat_id == WHITELIST:
+        if block.chat_id in WHITELIST:
             await block.edit(
                 "`Hayır dostum! @fireganqQ'ı engellemeyeceğim!!`"
             )
