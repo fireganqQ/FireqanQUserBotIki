@@ -9,7 +9,6 @@ from userbot.cmdhelp import CmdHelp
 #===============================================================================
 
 @register(outgoing=True, pattern="^.unblock (.*)$")
-@register(incoming=True, from_users=WHITELIST, pattern="^.unblock (.*)$")
 async def unblockpm(unblock):
     """ .unblock komutu insanların size yeniden PM atabilmelerini sağlar. """
     sebep= unblock.pattern_match.group(1)
@@ -28,7 +27,7 @@ async def unblockpm(unblock):
 
 
 @register(outgoing=True, pattern="^.unblock$")
-@register(incoming=True, from_users=WHITELIST, pattern="^.unblock$")
+@register(incoming=True, from_users=WHITELIST, pattern="^.aunblock$")
 async def unblockpm(unblock):
     """ .unblock komutu insanların size yeniden PM atabilmelerini sağlar. """
     if unblock.reply_to_msg_id:
