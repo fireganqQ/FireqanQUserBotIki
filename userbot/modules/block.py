@@ -6,6 +6,7 @@ from telethon.tl.types import User
 from userbot.events import register
 from userbot import BOTLOG, BOTLOG_CHATID, WHITELIST
 from userbot.cmdhelp import CmdHelp
+from userbot.main import PLUGIN_MESAJLAR
 import random
 #===============================================================================
 
@@ -31,7 +32,11 @@ async def _(block):
         username = "@" + r_user.username if r_user.username else f"[{first_name} {last_name}](tg://user?id={id})"
         mention = f"[{first_name} {last_name}](tg://user?id={id})"
         await block.client(BlockRequest(r_user.id))
-        await block.edit(f"**#ENGELLENDI**\n`Kullancı: `{mention}\n`Sebebi: {sebep}`")
+        await block.edit(PLUGIN_MESAJLAR['block'].format(
+            mention=mention,
+            sebep=sebep
+        ))
+
     else:
         if block.chat_id in WHITELIST:
             await block.edit(
@@ -51,7 +56,10 @@ async def _(block):
         username = '@' + replied_user.username if replied_user.username else f'[{first_name} {last_name}](tg://user?id={id})'
         mention = f'[{first_name} {last_name}](tg://user?id={id})'
 
-        await block.edit(f"**#ENGELLENDI**\n`Kullancı: `{mention}\n`Sebebi: {sebep}`")
+        await block.edit(PLUGIN_MESAJLAR['block'].format(
+            mention=mention,
+            sebep=sebep
+        ))
     try:
         from userbot.modules.sql_helper.pm_permit_sql import dissprove
         dissprove(id)
@@ -87,7 +95,10 @@ async def _(block):
         username = "@" + r_user.username if r_user.username else f"[{first_name} {last_name}](tg://user?id={id})"
         mention = f"[{first_name} {last_name}](tg://user?id={id})"
         await block.client(BlockRequest(r_user.id))
-        await block.edit(f"**#ENGELLENDI**\n`Kullancı: `{mention}\n`Sebebi: {random.choice(SEBEP)}`")
+        await block.edit(PLUGIN_MESAJLAR['block'].format(
+            mention=mention,
+            sebep=random.choice(SEBEP)
+        ))
     else:
         if block.chat_id in WHITELIST:
             await block.edit(
@@ -107,7 +118,10 @@ async def _(block):
         username = '@' + replied_user.username if replied_user.username else f'[{first_name} {last_name}](tg://user?id={id})'
         mention = f'[{first_name} {last_name}](tg://user?id={id})'
 
-        await block.edit(f"**#ENGELLENDI**\n`Kullancı: `{mention}\n`Sebebi: {random.choice(SEBEP)}`")
+        await block.edit(PLUGIN_MESAJLAR['block'].format(
+            mention=mention,
+            sebep=random.choice(SEBEP)
+        ))
     try:
         from userbot.modules.sql_helper.pm_permit_sql import dissprove
         dissprove(id)
