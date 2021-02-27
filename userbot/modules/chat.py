@@ -18,7 +18,7 @@ from userbot.events import register
 from userbot.modules.admin import get_user_from_event
 from userbot.main import PLUGIN_MESAJLAR
 
-@register(outgoing=True, pattern="^.userid$")
+@register(outgoing=True, pattern="^.id$")
 async def useridgetter(target):
     """ .userid komutu belirlenen kullanıcının ID numarasını verir """
     message = await target.get_reply_message()
@@ -37,6 +37,8 @@ async def useridgetter(target):
                 name = "*" + message.forward.sender.first_name + "*"
         await target.edit("**{}** {} \n**{}** `{}`".format(
             LANG['USERNAME'], name, LANG['ID'], user_id))
+    else:
+        await target.edit(f"{LANG['GROUP']} `" + str(target.chat_id) + "`")
 
 
 @register(outgoing=True, pattern="^.link(?: |$)(.*)")
@@ -51,13 +53,6 @@ async def permalink(mention):
         tag = user.first_name.replace("\u2060",
                                       "") if user.first_name else user.username
         await mention.edit(f"[{tag}](tg://user?id={user.id})")
-
-
-@register(outgoing=True, pattern="^.chatid$")
-async def chatidgetter(chat):
-    """ .chatid komutu belirlenen grubun ID numarasını verir """
-    await chat.edit(f"{LANG['GROUP']} `" + str(chat.chat_id) + "`")
-
 
 @register(outgoing=True, pattern=r"^.log(?: |$)([\s\S]*)")
 async def log(log_text):
@@ -169,9 +164,9 @@ async def sedNinjaToggle(event):
 
 CMD_HELP.update({
     "chat":
-    ".chatid\
+    ".id\
 \nKullanım: Belirlenen grubun ID numarasını verir\
-\n\n.userid\
+\n\n.id\
 \nKullanım: Belirlenen kullanıcının ID numarasını verir.\
 \n\n.log\
 \nKullanım: Yanıtlanan mesajı günlük grubuna gönderir.\
