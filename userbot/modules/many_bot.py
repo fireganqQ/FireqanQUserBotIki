@@ -31,6 +31,7 @@ async def _(event):
             audio = await conv.get_response()
             await conv.send_message(text)
             audio = await conv.get_response()
+            await conv.send_message("/skip")
             await event.client.forward_messages(event.chat_id, audio)
             await event.delete()
 
