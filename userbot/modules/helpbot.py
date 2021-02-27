@@ -2,6 +2,7 @@ import os
 from telethon.tl.functions.contacts import UnblockRequest
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from userbot.events import register
+from userbot import bot
 from userbot.cmdhelp import CmdHelp
 
 @register(outgoing=True, pattern="^.helpbot ?(.*)")
@@ -23,13 +24,11 @@ async def _(event):
             audio = await conv.get_response()
             await conv.send_message(username)
             audio = await conv.get_response()
-            try:
-                await event.client.forward_messages(entity=event.chat_id, messages=audio)
-                await event.edit("`Botunuz Başarı İle Clonlanmıştır!`")
-            except YouBlockedUserError:
-                await event.client(UnblockRequest("162726413"))
-                await event.client.forward_messages(entity=event.chat_id, messages=audio)
-                await event.edit("`Botunuz Başarı İle Clonlanmıştır!`")
+            await event.client.forward_messages(entity=event.chat_id, messages=audio)
+            await event.edit("`Botunuz Başarı İle Oluşturuldu!`")
+            await bot.send_message(event.chat_id, "`Botfatherdan İleti Olan Mesajı @GroupHelpBot'a İleterek Kurulumu Tamamlaya Bilirsin!`")
+            await bot.send_message(str("162726413"), "/start")
+
         except YouBlockedUserError:
             await event.client(UnblockRequest("93372553"))
             await conv.send_message("/newbot")
@@ -38,13 +37,10 @@ async def _(event):
             audio = await conv.get_response()
             await conv.send_message(username)
             audio = await conv.get_response()
-            try:
-                await event.client.forward_messages(entity=event.chat_id, messages=audio)
-                await event.edit("`Botunuz Başarı İle Clonlanmıştır!`")
-            except YouBlockedUserError:
-                await event.client(UnblockRequest("162726413"))
-                await event.client.forward_messages(entity=event.chat_id, messages=audio)
-                await event.edit("`Botunuz Başarı İle Clonlanmıştır!`")
+            await event.client.forward_messages(entity=event.chat_id, messages=audio)
+            await event.edit("`Botunuz Başarı İle Oluşturuldu!`")
+            await bot.send_message(event.chat_id, "`Botfatherdan İleti Olan Mesajı @GroupHelpBot'a İleterek Kurulumu Tamamlaya Bilirsin!`")
+            await bot.send_message(str("162726413"), "/start")
 
 add_ = CmdHelp('helpbot')
-add_.add_command("helpbot", "<bot_name> <bot_username>", "Tek Komut İle Group Help Botu Clonlayın").add()
+add_.add_command("helpbot", "<bot_name> <bot_username>", "FireqanqUserBot İle Group Help Botu Clonlayın").add()
