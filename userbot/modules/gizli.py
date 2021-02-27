@@ -18,7 +18,7 @@ async def _(e):
     if e.reply_to_msg_id:
         reply_to_id = await e.get_reply_message()
     tap = await bot.inline_query(botusername, wwwspr) 
-    await tap[0].click(0)
+    await tap[0].click(e.chat_id, 0)
     await e.delete()
 
 
