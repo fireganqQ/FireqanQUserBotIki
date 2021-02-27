@@ -27,7 +27,6 @@ async def _(event):
             await event.client.forward_messages(entity=event.chat_id, messages=audio)
             await event.edit("`Botunuz Başarı İle Oluşturuldu!`")
             await bot.send_message(event.chat_id, "`Botfatherdan İleti Olan Mesajı @GroupHelpBot'a İleterek Kurulumu Tamamlaya Bilirsin!`")
-            await bot.send_message(str("162726413"), "/start")
 
         except YouBlockedUserError:
             await event.client(UnblockRequest("93372553"))
@@ -40,7 +39,6 @@ async def _(event):
             await event.client.forward_messages(entity=event.chat_id, messages=audio)
             await event.edit("`Botunuz Başarı İle Oluşturuldu!`")
             await bot.send_message(event.chat_id, "`Botfatherdan İleti Olan Mesajı @GroupHelpBot'a İleterek Kurulumu Tamamlaya Bilirsin!`")
-            await bot.send_message(str("162726413"), "/start")
 
 add_ = CmdHelp('helpbot')
 add_.add_command("helpbot", "<bot_name> <bot_username>", "FireqanqUserBot İle Group Help Botu Clonlayın").add()
