@@ -9,7 +9,7 @@ msg_ = "Verdiğiniz Mesaj FireqanqUserBot Tarafından **Kayıtlı Mesajlara** G�
 yanıt_msg = "Yanıtınız FireqanqUserBot Tarafından **Kayıtlı Mesajlara** Gönderilmiştir!!"
 
 
-@register(outgoing=True, pattern="^.kyolla $")
+@register(outgoing=True, pattern="^.kyolla$")
 async def _(qwe):
   if qwe.is_reply:
     mesaj = await qwe.get_reply_message()
