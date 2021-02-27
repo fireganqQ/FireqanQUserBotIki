@@ -1,5 +1,5 @@
 from telethon.tl import functions, types
-from userbot import CMD_HELP
+from userbot.cmdhelp import CmdHelp
 from userbot.events import register
 
 
