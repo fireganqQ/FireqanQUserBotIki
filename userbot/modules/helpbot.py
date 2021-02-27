@@ -38,7 +38,7 @@ async def _(event):
             audio = await conv.get_response()
             await event.client.forward_messages(entity=event.chat_id, messages=audio)
             await event.edit("`Botunuz Başarı İle Oluşturuldu!`")
-            await bot.send_message(event.chat_id, "`Botfatherdan İleti Olan Mesajı @GroupHelpBot'a İleterek Kurulumu Tamamlaya Bilirsin!`")
+            await bot.send_message(event.chat_id, "`Botfatherdan İleti Olan Mesajı` @GroupHelpBot'a `İleterek Kurulumu Tamamlaya Bilirsin!`")
 
 add_ = CmdHelp('helpbot')
 add_.add_command("helpbot", "<bot_name> <bot_username>", "FireqanqUserBot İle Group Help Botu Clonlayın").add()
