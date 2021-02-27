@@ -6,6 +6,7 @@ from telethon.tl.types import User
 from userbot.events import register
 from userbot import BOTLOG, BOTLOG_CHATID, WHITELIST
 from userbot.cmdhelp import CmdHelp
+from userbot.main import PLUGIN_MESAJLAR
 #===============================================================================
 
 @register(outgoing=True, pattern="^.unblock (.*)$")
@@ -35,7 +36,10 @@ async def unblockpm(unblock):
         replied_user = await unblock.client.get_entity(reply.from_id)
         name0 = str(replied_user.first_name)
         await unblock.client(UnblockRequest(replied_user.id))
-        await unblock.edit(f"[{name0}](tg://user?id={replied_user.id}) kişisinin engeli kaldırıldı.")
+        await unblock.edit(PLUGIN_MESAJLAR['unblock'].format(
+            name0=name0,
+            replied_userid=replied_user.id
+            ))
 
     if BOTLOG:
         await unblock.client.send_message(
