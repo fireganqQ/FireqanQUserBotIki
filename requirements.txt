@@ -10,7 +10,9 @@ emoji
 gitpython
 google-api-python-client
 google-auth-oauthlib
-googletrans>=2.4.0
+googletrans
+googletrans
+google-trans-new
 google_images_download>=2.7.1
 gTTS>=2.1.1
 gTTS-token>=1.1.3
