@@ -20,8 +20,12 @@ from telethon.sync import TelegramClient, custom
 from telethon.sessions import StringSession
 from telethon.events import callbackquery, InlineQuery, NewMessage
 from math import ceil
+from .helpers import functions as fgdef
+import time
 
 load_dotenv("config.env")
+
+StartTime = time.time()
 
 # Bot günlükleri kurulumu:
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
@@ -62,11 +66,14 @@ if not LANGUAGE in ["TR", "AZ", "DEFAULT"]:
     LANGUAGE = "DEFAULT"
 
 
-FİREQANQ_VERSION = "v1.6.11"
+FİREQANQ_VERSION = "v1.8.11"
 
 # Telegram API KEY ve HASH
 API_KEY = os.environ.get("API_KEY", None)
 API_HASH = os.environ.get("API_HASH", None)
+
+ALIVE_PIC = os.environ.get("ALIVE_PIC", None)
+ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
 
 SILINEN_PLUGIN = {}
 # UserBot Session String
