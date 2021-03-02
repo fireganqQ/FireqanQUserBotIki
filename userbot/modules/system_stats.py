@@ -128,7 +128,7 @@ async def pipcheck(pip):
     else:
         await pip.edit(LANG['EXAMPLE'])
 
-@register(outgoing=True, pattern="^.alive$")
+@register(outgoing=True, pattern="^.malive$")
 async def amialive(e):
     me = await e.client.get_me()
     if type(PLUGIN_MESAJLAR['alive']) == str:
@@ -162,16 +162,6 @@ async def amialive(e):
         else:
             await e.respond(PLUGIN_MESAJLAR['alive'])
 
-@register(outgoing=True, pattern="^.salive$")
-async def amialive(e):
-    me = await e.client.get_me()
-    await e.edit("💋 FireqanqUserBot Calışıyor...😎\n\nTelethon Versiyon: {telethon}\nPython Versiyon: {python}\nFireqanqUserBot Versiyon: {fireqanq}\nPlugin Sayısı: {plugin}\nBenim Sahibim: {mention}".format(
-                telethon=version.__version__,
-                python=python_version(),
-                fireqanq=FİREQANQ_VERSION,
-                plugin=len(CMD_HELP),
-                mention=f'[{me.first_name}](tg://user?id={me.id})'
-            ))
 
 CmdHelp('system_stats').add_command(
     'sysd', None, 'Neofetch modülünü kullanarak sistem bilgisi gösterir.'
@@ -180,7 +170,5 @@ CmdHelp('system_stats').add_command(
 ).add_command(
     'pip', '<modül(ler)>', 'Pip modüllerinde arama yapar.'
 ).add_command(
-    'alive', None, 'Fireqanq botunun çalışıp çalışmadığını kontrol etmek için kullanılır.'
-).add_command(
-    'salive', None, 'Bot versiyonu gibi bircok özelliği öğrene bilirsiniz.'
+    'malive', None, 'Fireqanq botunun çalışıp çalışmadığını kontrol etmek için kullanılır.'
 ).add()
