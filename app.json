@@ -30,6 +30,10 @@
       "description": "Alive Mesajında Görünmesini İstediğin Resim Linki.",
       "value": ""
     },
+    "ID_USER": {
+      "description": "Alive De Sizi Etiketlemesi İçin Idnizi Giriniz.",
+      "value": ""
+    },
     "HEROKU_APIKEY": {
       "description": "Heroku API Key, 'https://dashboard.heroku.com/account' adresinden alın.",
       "value": ""
@@ -57,11 +61,6 @@
     "HEROKU_MEMEZ": {
       "description": "UserBot bir Heroku Dyno üzerinde çalışıyorsa, bu değer True olmalıdır.",
       "value": "True",
-      "required": true
-    },
-    "UPSTREAM_REPO_URL": {
-      "description": "Fork sağlamanız durumunda repo URL'nizi buraya ekleyin. Varsayılan olarak kendi repo adresimiz eklidir.",
-      "value": "https://github.com/fireganqQ/FireqanQUserBotIki.git",
       "required": true
     },
     "COUNTRY": {
