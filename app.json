@@ -22,6 +22,14 @@
       "description": "Bu değeri my.telegram.org adresinden alın.",
       "required": true
     },
+    "ALIVE_NAME": {
+      "description": "Alive Mesajında Görünmesini İstediğin İsim.",
+      "value": ""
+    },
+    "ALIVE_PIC": {
+      "description": "Alive Mesajında Görünmesini İstediğin Resim Linki.",
+      "value": ""
+    },
     "HEROKU_APIKEY": {
       "description": "Heroku API Key, 'https://dashboard.heroku.com/account' adresinden alın.",
       "value": ""
