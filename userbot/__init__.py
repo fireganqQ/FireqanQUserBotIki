@@ -72,8 +72,9 @@ FİREQANQ_VERSION = "v1.8.11"
 API_KEY = os.environ.get("API_KEY", None)
 API_HASH = os.environ.get("API_HASH", None)
 
-ALIVE_PIC = os.environ.get("ALIVE_PIC", None)
+ALIVE_PIC = os.environ.get("ALIVE_PIC", "https://telegra.ph/file/c0d18f7499d737c43bd9d.mp4")
 ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
+ALIVE_NAME = os.environ.get("ID_USER", None)
 
 SILINEN_PLUGIN = {}
 # UserBot Session String
