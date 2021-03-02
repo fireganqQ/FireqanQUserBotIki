@@ -78,3 +78,6 @@ async def dyno_usage(dyno):
                            f"     •  `{hours}` **saat**  `{minutes}` **Dakika**  "
                            f"**|**  [`{percentage}` **%**]"
                            )
+
+c= CmdHelp('dayno')
+c.add_command("dyno","Kullanılan Dyno Saati İle Kalan Dyno Saatini Verir").add()
