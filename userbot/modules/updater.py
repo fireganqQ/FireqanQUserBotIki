@@ -80,6 +80,10 @@ async def upstream(ups):
 
     ac_br = repo.active_branch.name
 
+    if ac_br != "fireqanquserbot":
+        ups.edit("**Dostuum!!! Sen Orjinal FireqanqUserBot Reposu Kullanmıyorsun Orjinal Repoyu Kurmal İçin Support Grubuma Gel ==>** @FireqanqUserBot")
+        return
+
     try:
         repo.create_remote('upstream', off_repo)
     except BaseException:
