@@ -23,7 +23,6 @@ LANG = get_value("updater")
 
 # ████████████████████████████████ #
 
-
 async def gen_chlog(repo, diff):
     ch_log = ''
     d_form = "%d/%m/%y"
