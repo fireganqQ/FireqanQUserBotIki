@@ -30,7 +30,7 @@
       "description": "Alive Mesajında Görünmesini İstediğin Resim Linki.",
       "value": ""
     },
-    "ID_USER": {
+    "ALIVE_ID_USER": {
       "description": "Alive De Sizi Etiketlemesi İçin Idnizi Giriniz.",
       "value": ""
     },
