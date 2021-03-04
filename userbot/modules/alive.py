@@ -5,13 +5,15 @@ from PIL import Image
 from telethon import version
 from userbot import StartTime
 from platform import python_version
-from userbot import ALIVE_NAME, fgdef, FİREQANQ_VERSION, ALIVE_PIC, bot, ID_USER
+from userbot import ALIVE_NAME, fgdef, FİREQANQ_VERSION, ALIVE_PIC, bot, ALIVE_ID_USER
 from userbot.events import register
 from telethon import events
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "FireqanqUserBot"
 
-id_ = ID_USER if ID_USER else "1340915968"
+id_ = ALIVE_ID_USER if ALIVE_ID_USER else "1340915968"
+
+ALIVE_PIC= ALIVE_PIC if ALIVE_PIC else "https://telegra.ph/file/c0d18f7499d737c43bd9d.mp4"
 
 @register(outgoing=True, pattern="^.alive")
 async def amireallyalive(a):
