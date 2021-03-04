@@ -76,6 +76,9 @@ ALIVE_PIC = os.environ.get("ALIVE_PIC", None)
 ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
 ID_USER = os.environ.get("ALIVE_ID_USER", None)
 
+TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "fireqanquserbot")
+TMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY", "./DOWNLOADS/")
+
 SILINEN_PLUGIN = {}
 # UserBot Session String
 STRING_SESSION = os.environ.get("STRING_SESSION", None)
