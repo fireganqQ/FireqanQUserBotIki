@@ -11,7 +11,7 @@ from telethon import events
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "FireqanqUserBot"
 
-id_ = ALIVE_ID_USER if ALIVE_ID_USER else "1340915968"
+id_ = f"[{DEFAULTUSER}](tg://user?id={int(ALIVE_ID_USER)})" if ALIVE_ID_USER else DEFAULTUSER
 
 ALIVE_PIC= ALIVE_PIC if ALIVE_PIC else "https://telegra.ph/file/c0d18f7499d737c43bd9d.mp4"
 
@@ -31,7 +31,7 @@ async def amireallyalive(a):
         fg_caption += f"**✧ FireqanqUserBot Sürümü :** `{FİREQANQ_VERSION}`\n"
         fg_caption += f"**✧ Python Sürümü :** `{python_version()}\n`"
         fg_caption += f"**✧ Çalışma Süresi :** `{uptime}\n`"
-        fg_caption += f"**✧ Benim Ustam :** [{DEFAULTUSER}](tg://user?id={int(id_)})\n"
+        fg_caption += f"**✧ Benim Ustam :** {id_}\n"
         await bot.send_file(a.chat_id, ALIVE_PIC, caption=fg_caption, reply_to=reply_to_id)
         await a.delete()
     else:
