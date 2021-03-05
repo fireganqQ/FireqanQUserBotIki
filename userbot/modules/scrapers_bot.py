@@ -85,7 +85,7 @@ def MemeYap (Resim, Text, FontS = 40, Bottom = False, BottomText = None):
                 drawTextWithOutline(Bottom_Satirlar[i], x, y)
                 lastY = y
 
-    Foto.save("fireqanqmeme.png")
+    Foto.save("Fireqanqmeme.png")
 
 @register(outgoing=True, pattern="^.sangmata(?: |$)(.*)")
 async def sangmata(event):
