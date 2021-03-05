@@ -172,7 +172,7 @@ async def memeyap(event):
             return await event.edit(LANG['REPLY_TO_MEME'])
             
         if os.path.exists("./Fireqanqmeme.png"):
-            os.remove("./Fireqanqeme.png")
+            os.remove("./Fireqanqmeme.png")
 
         MemeYap(Resim, Text, font, Bottom, BottomText)
         await event.client.send_file(event.chat_id, "./Fireqanqmeme.png", reply_to=reply)
