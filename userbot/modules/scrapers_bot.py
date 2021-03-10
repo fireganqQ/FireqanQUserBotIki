@@ -148,22 +148,22 @@ async def memeyap(event):
             BottomText = None
         
         if reply.photo:
-            Resim = await event.client.loop.create_task(reply.photo.download_media())
+            Resim = await event.client.download_media(reply.photo)
         elif reply.sticker and reply.file.ext == ".webp":
             if os.path.exists("./FireqanqSticker.png"):
                 os.remove("./FireqanqSticker.png")
 
-            foto = await event.client.loop.create_task(reply.sticker.download_media())
+            foto = await event.client.download_media(reply.sticker)
             im = Image.open(foto).convert("RGB")
             im.save("FireqanqSticker.png", "png")
             Resim = "FireqanqSticker.png"
         elif reply.sticker and reply.file.ext == ".tgs":
-            sticker = await event.client.loop.create_task(reply.sticker.download_media())
+            sticker = await event.client.download_media(reply.sticker)
             os.system(f"lottie_convert.py --frame 0 -if lottie -of png '{sticker}' FireqanqSticker.png")
             os.remove(sticker)
             Resim = "FireqanqSticker.png"
         elif reply.media:
-            Resim = await event.client.loop.create_task(reply.media.download_media())
+            Resim = await event.client.download_media(reply.media)
             Sure = os.system("ffmpeg -i '"+Resim+"' 2>&1 | grep Duration | awk '{print $2}' | tr -d , | awk -F ':' '{print ($3+$2*60+$1*3600)/2}'``")
             os.system(f"ffmpeg -i '{Resim}' -vcodec mjpeg -vframes 1 -an -f rawvideo -ss {Sure} FireqanqThumb.jpg")
             os.remove(Resim)
