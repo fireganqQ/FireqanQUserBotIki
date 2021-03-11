@@ -119,18 +119,18 @@ async def _(q):
 	if text.lower() in a_:
 		if text.lower() == "alive":
 			if text_2.lower() != "true" or text_2.lower() != "false" or text_2.lower() == "":
-		 		await q.edit("`Sadece True Veya False Giriniz...`")
-		 		return
-		 	else:
-		 		if text_2.lower() == "true":
-		 			ALİVE_ = True
-		 			await q.edit("`Alive Değeriniz True Olarak Değiştirilmiştir...`")
-		 			return
+				await q.edit("`Sadece True Veya False Giriniz...`")
+				return
+			else:
+				if text_2.lower() == "true":
+					ALİVE_ = True
+					await q.edit("`Alive Değeriniz True Olarak Değiştirilmiştir...`")
+					return
 
-		 		if text_2.lower() == "false":
-		 			ALİVE_ = False
-		 			await q.edit("`Alive Değeriniz Fasle Olarak Değiştirilmiştir...`")
-		 			return
+				if text_2.lower() == "false":
+					ALİVE_ = False
+					await q.edit("`Alive Değeriniz Fasle Olarak Değiştirilmiştir...`")
+					return
 		if text.lower() == "name":
 			if text_2.lower() != "":
 				ALİVE_N_=text_2
