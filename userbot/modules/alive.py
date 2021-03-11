@@ -73,7 +73,7 @@ async def amireallyalive(a):
                             	f"**✧ FireqanqUserBot Sürümü :** `{FİREQANQ_VERSION}`\n"
                             	f"**✧ Python Sürümü :** `{python_version()}\n`"
                             	f"**✧ Çalışma Süresi :** `{uptime}\n`"
-                            	f"**✧ Benim Ustam :** [{DEFAULTUSER}](tg://user?id={id_})\n"
+                            	f"**✧ Benim Ustam :** {id_}\n"
                             	)
 	else:
 		me = await e.client.get_me()
