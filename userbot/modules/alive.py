@@ -15,10 +15,14 @@ ALİVE_N_ = None
 ALİVE_I_ = None
 ALİVE_P_ = None
 
+DEFAULTUSER=None
+id_=None
+ALIVE_PIC=None
+
 def degiskenler():
-	DEFAULTUSER=None
-	id_=None
-	ALIVE_PIC=None
+	global DEFAULTUSER
+	global id_
+	global ALIVE_PIC
 	if ALİVE_:
 		if ALİVE_N_:
 			DEFAULTUSER = ALİVE_N_
@@ -56,25 +60,18 @@ async def amireallyalive(a):
 		_, check_sgnirts = check_data_base_heal_th()
 		if a.reply_to_msg_id:
 			reply_to_id = await a.get_reply_message()
+		fg_caption = f"__**✮ FireqanqUserBot ÇALIŞIYOR ✮**__\n\n"
+		fg_caption += f"**✧ Veri Tabanı :** `{check_sgnirts}`\n"
+		fg_caption += f"**✧ Telethon Sürümü :** `{version.__version__}\n`"
+		fg_caption += f"**✧ FireqanqUserBot Sürümü :** `{FİREQANQ_VERSION}`\n"
+		fg_caption += f"**✧ Python Sürümü :** `{python_version()}\n`"
+		fg_caption += f"**✧ Çalışma Süresi :** `{uptime}\n`"
+		fg_caption += f"**✧ Benim Ustam :** {id_}\n"
 		if ALIVE_PIC:
-			fg_caption = f"__**✮ FireqanqUserBot ÇALIŞIYOR ✮**__\n\n"
-			fg_caption += f"**✧ Veri Tabanı :** `{check_sgnirts}`\n"
-			fg_caption += f"**✧ Telethon Sürümü :** `{version.__version__}\n`"
-			fg_caption += f"**✧ FireqanqUserBot Sürümü :** `{FİREQANQ_VERSION}`\n"
-			fg_caption += f"**✧ Python Sürümü :** `{python_version()}\n`"
-			fg_caption += f"**✧ Çalışma Süresi :** `{uptime}\n`"
-			fg_caption += f"**✧ Benim Ustam :** {id_}\n"
 			await bot.send_file(a.chat_id, ALIVE_PIC, caption=fg_caption, reply_to=reply_to_id)
 			await a.delete()
 		else:
-			await a.edit(a, f"__**✮ FireqanqUserBot ÇALIŞIYOR ✮**__\n\n"
-    	                        f"**✧ Veri Tabanı :** `{check_sgnirts}`\n"
-                            	f"**✧ Telethon Sürümü :** `{version.__version__}\n`"
-                            	f"**✧ FireqanqUserBot Sürümü :** `{FİREQANQ_VERSION}`\n"
-                            	f"**✧ Python Sürümü :** `{python_version()}\n`"
-                            	f"**✧ Çalışma Süresi :** `{uptime}\n`"
-                            	f"**✧ Benim Ustam :** {id_}\n"
-                            	)
+			await a.edit(fg_caption)
 	else:
 		me = await e.client.get_me()
 		await e.edit(PLUGIN_MESAJLAR['alive'].format(
