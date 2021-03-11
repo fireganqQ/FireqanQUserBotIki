@@ -1,4 +1,3 @@
-#import nekos
 import requests
 import time
 from PIL import Image
@@ -120,47 +119,44 @@ async def _(q):
 	except:
 		await q.edit("`Gecersiz Değer Girdiniz Değiştire Bileceğiniz Değerler =>` `alive``/``name``/``pic``/``id`")
 		return
-	if text.lower() == "alive" or text.lower() == "name" or text.lower() == "pic" or text.lower() == "id":
-		if text.lower() == "alive":
-			if text_2.lower() != "true" or text_2.lower() != "false" or text_2.lower() == "":
-				await q.edit("`Sadece True Veya False Giriniz...`")
-				return
-			else:
-				if text_2.lower() == "true":
-					ALİVE_ = True
-					await q.edit("`Alive Değeriniz True Olarak Değiştirilmiştir...`")
-					return
 
-				if text_2.lower() == "false":
-					ALİVE_ = False
-					await q.edit("`Alive Değeriniz Fasle Olarak Değiştirilmiştir...`")
-					return
-		if text.lower() == "name":
-			if text_2.lower() != "":
-				ALİVE_N_=text_2
-				await q.edit("`Name Değeriniz {} Olarak Değiştirilmiştir...`".format(text_2))
-				return
-			else:
-				await q.edit("`Name Değişkenini Değiştirmem İçin Bana Bir İsim Vermelisim!!`")
+	if text.lower() == "alive":
+		if text_2.lower() != "true" or text_2.lower() != "false" or text_2.lower() == "":
+			await q.edit("`Sadece True Veya False Giriniz...`")
+			return
+		else:
+			if text_2.lower() == "true":
+				ALİVE_ = True
+				await q.edit("`Alive Değeriniz True Olarak Değiştirilmiştir...`")
 				return
 
-		if text.lower() == "pic":
-			if text_2.lower() != "":
-				ALİVE_P_=text_2
-				await q.edit("`Alive Pic Linkiniz {} Olarak Değiştirilmiştir...`".format(text_2))
+			if text_2.lower() == "false":
+				ALİVE_ = False
+				await q.edit("`Alive Değeriniz Fasle Olarak Değiştirilmiştir...`")
 				return
-			else:
-				await q.edit("`Pic Değişkenini Değiştirmem İçin Bana Bir Link Vermelisim!!`")
-				return
+	if text.lower() == "name":
+		if text_2.lower() != "":
+			ALİVE_N_=text_2
+			await q.edit("`Name Değeriniz {} Olarak Değiştirilmiştir...`".format(text_2))
+			return
+		else:
+			await q.edit("`Name Değişkenini Değiştirmem İçin Bana Bir İsim Vermelisim!!`")
+			return
 
-		if text.lower() == "id":
-			if text_2.lower() != "":
-				ALİVE_I_=text_2
-				await q.edit("`İd Değişkeniniz {} Olarak Değiştirilmiştir...`".format(text_2))
-				return
-			else:
-				await q.edit("`İd Değişkenini Değiştirmem İçin Bana Bir İd Vermelisim!!`")
-				return
-	else:
-		await q.edit("`Gecersiz Değer Girdiniz Değiştire Bileceğiniz Değerler =>` `alive``/``name``/``pic``/``id`")
-		return
+	if text.lower() == "pic":
+		if text_2.lower() != "":
+			ALİVE_P_=text_2
+			await q.edit("`Alive Pic Linkiniz {} Olarak Değiştirilmiştir...`".format(text_2))
+			return
+		else:
+			await q.edit("`Pic Değişkenini Değiştirmem İçin Bana Bir Link Vermelisim!!`")
+			return
+
+	if text.lower() == "id":
+		if text_2.lower() != "":
+			ALİVE_I_=text_2
+			await q.edit("`İd Değişkeniniz {} Olarak Değiştirilmiştir...`".format(text_2))
+			return
+		else:
+			await q.edit("`İd Değişkenini Değiştirmem İçin Bana Bir İd Vermelisim!!`")
+			return
