@@ -31,11 +31,11 @@ async def variable(var):
     if exe == "get":
         fireqanq = await var.edit("`Bilgi alınıyor...`")
         await asyncio.sleep(1.0)
-        try:
-            variable = var.pattern_match.group(2).split()[0]
-            if variable in heroku_var:
-                return await fireqanq.edit("**ConfigVars**:",f"\n\n`{variable} = {heroku_var[variable]}`\n")
-            return await fireqanq.edit("**ConfigVars**:",f"\n\n`Error:\n-> {variable} don't exists`")
+        
+        variable = var.pattern_match.group(2).split()[0]
+        if variable in heroku_var:
+            return await fireqanq.edit("**ConfigVars**:",f"\n\n`{variable} = {heroku_var[variable]}`\n")
+        return await fireqanq.edit("**ConfigVars**:",f"\n\n`Error:\n-> {variable} don't exists`")
     if exe == "set":
         fireqanq = await var.edit("`Ayar bilgileri...`")
         variable = var.pattern_match.group(2)
