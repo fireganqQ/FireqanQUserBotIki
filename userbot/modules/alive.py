@@ -43,9 +43,11 @@ def degiskenler():
 
 @register(outgoing=True, pattern="^.alive")
 async def amireallyalive(a):
-	degiskenler()
-    if a.fwd_from:
+	if a.fwd_from:
         return
+
+    degiskenler()
+    
 
     if ALİVE_:
     	reply_to_id = a.message
