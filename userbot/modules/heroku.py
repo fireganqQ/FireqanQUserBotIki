@@ -25,8 +25,7 @@ async def variable(var):
     if HEROKU_APP_NAME is not None:
         app = Heroku.app(HEROKU_APP_NAME)
     else:
-        return await var.edit("`[HEROKU]:"
-                                   "\nLütfen kurulumunu yap` **HEROKU_APP_NAME**")
+        return await var.edit("`[HEROKU]:","\nLütfen kurulumunu yap` **HEROKU_APP_NAME**")
     exe = var.pattern_match.group(1)
     heroku_var = app.config()
     if exe == "get":
@@ -35,11 +34,9 @@ async def variable(var):
         try:
             variable = var.pattern_match.group(2).split()[0]
             if variable in heroku_var:
-                return await fireqanq.edit("**ConfigVars**:"
-                                         f"\n\n`{variable} = {heroku_var[variable]}`\n")
-            return await fireqanq.edit("**ConfigVars**:"
-                                     f"\n\n`Error:\n-> {variable} don't exists`")
-            
+                return await fireqanq.edit("**ConfigVars**:",f"\n\n`{variable} = {heroku_var[variable]}`\n")
+            return await fireqanq.edit("**ConfigVars**:",f"\n\n`Error:\n-> {variable} don't exists`")
+
     elif exe == "set":
         fireqanq = await var.edit("`Ayar bilgileri...`")
         variable = var.pattern_match.group(2)
