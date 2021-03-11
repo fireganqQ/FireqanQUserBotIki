@@ -115,8 +115,11 @@ async def _(q):
 
 	text = q.pattern_match.group().split()
 	text.pop(0)
-	text, text_2=text
-
+	try:
+		text, text_2=text
+	except:
+		await q.edit("`Gecersiz Değer Girdiniz Değiştire Bileceğiniz Değerler =>` `alive``/``name``/``pic``/``id`")
+		return
 	if text.lower() == "alive" or text.lower() == "name" or text.lower() == "pic" or text.lower() == "id":
 		if text.lower() == "alive":
 			if text_2.lower() != "true" or text_2.lower() != "false" or text_2.lower() == "":
