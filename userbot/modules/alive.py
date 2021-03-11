@@ -116,7 +116,7 @@ async def _(q):
 	text = q.pattern_match.group(1)
 	text_2 = q.pattern_match.group(2)
 
-	if text.lower() in a_:
+	if text.lower() == "alive" or text.lower() == "name" or text.lower() == "pic" or text.lower() == "id" or :
 		if text.lower() == "alive":
 			if text_2.lower() != "true" or text_2.lower() != "false" or text_2.lower() == "":
 				await q.edit("`Sadece True Veya False Giriniz...`")
