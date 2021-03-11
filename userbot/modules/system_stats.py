@@ -128,40 +128,6 @@ async def pipcheck(pip):
     else:
         await pip.edit(LANG['EXAMPLE'])
 
-@register(outgoing=True, pattern="^.malive$")
-async def amialive(e):
-    me = await e.client.get_me()
-    if type(PLUGIN_MESAJLAR['alive']) == str:
-        await e.edit(PLUGIN_MESAJLAR['alive'].format(
-            telethon=version.__version__,
-            python=python_version(),
-            fireqanq=FİREQANQ_VERSION,
-            plugin=len(CMD_HELP),
-            id=me.id,
-            username='@' + me.username if me.username else f'[{me.first_name}](tg://user?id={me.id})',
-            first_name=me.first_name,
-            last_name=me.last_name if me.last_name else '',
-            mention=f'[{me.first_name}](tg://user?id={me.id})'
-        ))
-    else:
-        await e.delete()
-        if not PLUGIN_MESAJLAR['alive'].text == '':
-            PLUGIN_MESAJLAR['alive'].text = PLUGIN_MESAJLAR['alive'].text.format(
-                telethon=version.__version__,
-                python=python_version(),
-                fireqanq=FİREQANQ_VERSION,
-                plugin=len(CMD_HELP),
-                id=me.id,
-                username='@' + me.username if me.username else f'[{me.first_name}](tg://user?id={me.id})',
-                first_name=me.first_name,
-                last_name=me.last_name if me.last_name else '',
-                mention=f'[{me.first_name}](tg://user?id={me.id})'
-            )
-        if e.is_reply:
-            await e.respond(PLUGIN_MESAJLAR['alive'], reply_to=e.message.reply_to_msg_id)
-        else:
-            await e.respond(PLUGIN_MESAJLAR['alive'])
-
 
 CmdHelp('system_stats').add_command(
     'sysd', None, 'Neofetch modülünü kullanarak sistem bilgisi gösterir.'
@@ -169,6 +135,4 @@ CmdHelp('system_stats').add_command(
     'botver', None, 'Userbot sürümünü gösterir.'
 ).add_command(
     'pip', '<modül(ler)>', 'Pip modüllerinde arama yapar.'
-).add_command(
-    'malive', None, 'Fireqanq botunun çalışıp çalışmadığını kontrol etmek için kullanılır.'
 ).add()
