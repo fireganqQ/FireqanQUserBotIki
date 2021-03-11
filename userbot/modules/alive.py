@@ -16,6 +16,9 @@ ALİVE_I_ = None
 ALİVE_P_ = None
 
 def degiskenler():
+	DEFAULTUSER=None
+	id_=None
+	ALIVE_PIC=None
 	if ALİVE_:
 		if ALİVE_N_:
 			DEFAULTUSER = ALİVE_N_
