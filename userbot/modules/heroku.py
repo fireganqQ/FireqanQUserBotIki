@@ -36,7 +36,6 @@ async def variable(var):
             if variable in heroku_var:
                 return await fireqanq.edit("**ConfigVars**:",f"\n\n`{variable} = {heroku_var[variable]}`\n")
             return await fireqanq.edit("**ConfigVars**:",f"\n\n`Error:\n-> {variable} don't exists`")
-
     if exe == "set":
         fireqanq = await var.edit("`Ayar bilgileri...`")
         variable = var.pattern_match.group(2)
