@@ -113,8 +113,9 @@ async def _(q):
 
 	a_=["alive","name","pic","id"]
 
-	text = q.pattern_match.group(1)
-	text_2 = q.pattern_match.group(2)
+	text = q.pattern_match.group().split()
+	text.pop(0)
+	text, text_2=text
 
 	if text.lower() == "alive" or text.lower() == "name" or text.lower() == "pic" or text.lower() == "id":
 		if text.lower() == "alive":
