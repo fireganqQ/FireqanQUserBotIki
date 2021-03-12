@@ -8,6 +8,7 @@ from userbot import ALIVE_NAME, fgdef, FİREQANQ_VERSION, ALIVE_PIC, bot, ALIVE_
 from userbot.events import register
 from telethon import events
 from userbot.main import PLUGIN_MESAJLAR
+from userbot.cmdhelp import CmdHelp as c
 
 ALİVE_ = True
 ALİVE_N_ = None
