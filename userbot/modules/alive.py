@@ -16,21 +16,19 @@ ALİVE_P_ = None
 
 DEFAULTUSER=None
 id_=None
-ALIVE_PIIC=None
 
 def degiskenler():
 	global DEFAULTUSER
 	global id_
-	global ALIVE_PIIC
 	if ALİVE_:
 		if ALİVE_N_:
 			DEFAULTUSER = ALİVE_N_
 			if ALİVE_I_:
 				id_ = f"[{DEFAULTUSER}](tg://user?id={int(ALİVE_I_)})"
 				if ALİVE_P_:
-					ALIVE_PIIC = ALİVE_P_
+					ALIVE_PIC = ALİVE_P_
 				else:
-					ALIVE_PIIC= ALIVE_PIC if ALIVE_PIC else "https://telegra.ph/file/c0d18f7499d737c43bd9d.mp4"
+					ALIVE_PIC= ALIVE_PIC if ALIVE_PIC else "https://telegra.ph/file/c0d18f7499d737c43bd9d.mp4"
 			else:
 				id_ = f"[{DEFAULTUSER}](tg://user?id={int(ALIVE_ID_USER)})" if ALIVE_ID_USER else DEFAULTUSER
 		else:
@@ -38,9 +36,9 @@ def degiskenler():
 			if ALİVE_I_:
 				id_ = f"[{DEFAULTUSER}](tg://user?id={int(ALİVE_I_)})"
 				if ALİVE_P_:
-					ALIVE_PIIC = ALİVE_P_
+					ALIVE_PIC = ALİVE_P_
 				else:
-					ALIVE_PIIC= ALIVE_PIC if ALIVE_PIC else "https://telegra.ph/file/c0d18f7499d737c43bd9d.mp4"
+					ALIVE_PIC= ALIVE_PIC if ALIVE_PIC else "https://telegra.ph/file/c0d18f7499d737c43bd9d.mp4"
 			else:
 				id_ = f"[{DEFAULTUSER}](tg://user?id={int(ALIVE_ID_USER)})" if ALIVE_ID_USER else DEFAULTUSER
 
@@ -64,7 +62,7 @@ async def amireallyalive(a):
 		fg_caption += f"**✧ Python Sürümü :** `{python_version()}\n`"
 		fg_caption += f"**✧ Çalışma Süresi :** `{uptime}\n`"
 		fg_caption += f"**✧ Benim Ustam :** {id_}\n"
-		await bot.send_file(a.chat_id, ALIVE_PIIC, caption=fg_caption, reply_to=reply_to_id)
+		await bot.send_file(a.chat_id, ALIVE_PIC, caption=fg_caption, reply_to=reply_to_id)
 		await a.delete()
 	else:
 		me = await a.client.get_me()
