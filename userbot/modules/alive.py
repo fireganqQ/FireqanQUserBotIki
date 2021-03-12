@@ -43,8 +43,6 @@ def degiskenler():
 					ALIVE_PIIC= ALIVE_PIC if ALIVE_PIC else "https://telegra.ph/file/c0d18f7499d737c43bd9d.mp4"
 			else:
 				id_ = f"[{DEFAULTUSER}](tg://user?id={int(ALIVE_ID_USER)})" if ALIVE_ID_USER else DEFAULTUSER
-	
-	return DEFAULTUSER, id_, ALIVE_PIIC
 
 
 @register(outgoing=True, pattern="^.alive")
