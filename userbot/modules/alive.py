@@ -118,12 +118,12 @@ async def _(q):
 	try:
 		text, text_2=text
 		if text == "" and text == " ":
-		await q.edit("`Gecersiz Değer Girdiniz Değiştire Bileceğiniz Değerler =>` `alive``/``name``/``pic``/``id`")
-		return		
+			await q.edit("`Gecersiz Değer Girdiniz Değiştire Bileceğiniz Değerler =>` `alive``/``name``/``pic``/``id`")
+			return		
 	except:
 		await q.edit("`Gecersiz Değer Girdiniz Değiştire Bileceğiniz Değerler =>` `alive``/``name``/``pic``/``id`")
 		return
-		
+
 	if text.lower() == "alive":
 		if text_2.lower() != "true" and text_2.lower() != "false" or text_2.lower() == "":
 			await q.edit("`Sadece True Veya False Giriniz...`")
