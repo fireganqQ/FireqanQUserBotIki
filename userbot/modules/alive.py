@@ -13,7 +13,7 @@ ALİVE_ = True
 ALİVE_N_ = None
 ALİVE_I_ = None
 ALİVE_P_ = None
-
+"""
 def degiskenler():
 	if ALİVE_:
 		if ALİVE_N_:
@@ -26,6 +26,10 @@ def degiskenler():
 					ALIVE_PIC= ALIVE_PIC if ALIVE_PIC else "https://telegra.ph/file/c0d18f7499d737c43bd9d.mp4"
 			else:
 				id_ = f"[{DEFAULTUSER}](tg://user?id={int(ALIVE_ID_USER)})" if ALIVE_ID_USER else DEFAULTUSER
+				if ALİVE_P_:
+					ALIVE_PIC = ALİVE_P_
+				else:
+					ALIVE_PIC= ALIVE_PIC if ALIVE_PIC else "https://telegra.ph/file/c0d18f7499d737c43bd9d.mp4"
 		else:
 			DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "FireqanqUserBot"
 			if ALİVE_I_:
@@ -36,13 +40,45 @@ def degiskenler():
 					ALIVE_PIC= ALIVE_PIC if ALIVE_PIC else "https://telegra.ph/file/c0d18f7499d737c43bd9d.mp4"
 			else:
 				id_ = f"[{DEFAULTUSER}](tg://user?id={int(ALIVE_ID_USER)})" if ALIVE_ID_USER else DEFAULTUSER
-	return ALIVE_PIC, id_
-
+				if ALİVE_P_:
+					ALIVE_PIC = ALİVE_P_
+				else:
+					ALIVE_PIC= ALIVE_PIC if ALIVE_PIC else "https://telegra.ph/file/c0d18f7499d737c43bd9d.mp4"
+"""
 @register(outgoing=True, pattern="^.alive")
 async def amireallyalive(a):
 	if a.fwd_from:
 		return
-	degiskenler()
+	if ALİVE_:
+		if ALİVE_N_:
+			DEFAULTUSER = ALİVE_N_
+			if ALİVE_I_:
+				id_ = f"[{DEFAULTUSER}](tg://user?id={int(ALİVE_I_)})"
+				if ALİVE_P_:
+					ALIVE_PIC = ALİVE_P_
+				else:
+					ALIVE_PIC= ALIVE_PIC if ALIVE_PIC else "https://telegra.ph/file/c0d18f7499d737c43bd9d.mp4"
+			else:
+				id_ = f"[{DEFAULTUSER}](tg://user?id={int(ALIVE_ID_USER)})" if ALIVE_ID_USER else DEFAULTUSER
+				if ALİVE_P_:
+					ALIVE_PIC = ALİVE_P_
+				else:
+					ALIVE_PIC= ALIVE_PIC if ALIVE_PIC else "https://telegra.ph/file/c0d18f7499d737c43bd9d.mp4"
+		else:
+			DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "FireqanqUserBot"
+			if ALİVE_I_:
+				id_ = f"[{DEFAULTUSER}](tg://user?id={int(ALİVE_I_)})"
+				if ALİVE_P_:
+					ALIVE_PIC = ALİVE_P_
+				else:
+					ALIVE_PIC= ALIVE_PIC if ALIVE_PIC else "https://telegra.ph/file/c0d18f7499d737c43bd9d.mp4"
+			else:
+				id_ = f"[{DEFAULTUSER}](tg://user?id={int(ALIVE_ID_USER)})" if ALIVE_ID_USER else DEFAULTUSER
+				if ALİVE_P_:
+					ALIVE_PIC = ALİVE_P_
+				else:
+					ALIVE_PIC= ALIVE_PIC if ALIVE_PIC else "https://telegra.ph/file/c0d18f7499d737c43bd9d.mp4"
+
 
 	if ALİVE_:
 		reply_to_id = a.message
