@@ -66,11 +66,8 @@ async def amireallyalive(a):
 		fg_caption += f"**✧ Python Sürümü :** `{python_version()}\n`"
 		fg_caption += f"**✧ Çalışma Süresi :** `{uptime}\n`"
 		fg_caption += f"**✧ Benim Ustam :** {id_}\n"
-		if ALIVE_PIIC:
-			await bot.send_file(a.chat_id, ALIVE_PIIC, caption=fg_caption, reply_to=reply_to_id)
-			await a.delete()
-		else:
-			await a.edit(fg_caption)
+		await bot.send_file(a.chat_id, ALIVE_PIIC, caption=fg_caption, reply_to=reply_to_id)
+		await a.delete()
 	else:
 		me = await a.client.get_me()
 		await a.edit(PLUGIN_MESAJLAR['alive'].format(
