@@ -14,12 +14,7 @@ ALİVE_N_ = None
 ALİVE_I_ = None
 ALİVE_P_ = None
 
-DEFAULTUSER=None
-id_=None
-
 def degiskenler():
-	global DEFAULTUSER
-	global id_
 	if ALİVE_:
 		if ALİVE_N_:
 			DEFAULTUSER = ALİVE_N_
