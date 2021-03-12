@@ -36,7 +36,7 @@ def degiskenler():
 					ALIVE_PIC= ALIVE_PIC if ALIVE_PIC else "https://telegra.ph/file/c0d18f7499d737c43bd9d.mp4"
 			else:
 				id_ = f"[{DEFAULTUSER}](tg://user?id={int(ALIVE_ID_USER)})" if ALIVE_ID_USER else DEFAULTUSER
-
+	return ALIVE_PIC, id_
 
 @register(outgoing=True, pattern="^.alive")
 async def amireallyalive(a):
