@@ -80,7 +80,7 @@ async def _(dyno):
                         json={"content": data}).json().get('result').get('key')
     url = f'https://nekobin.com/{key}'
     reply_text = f'Son 100 satır heroku günlüğüs: [burada]({url})'
-    await var.edit(dyno, reply_text)
+    await dyno.edit(reply_text)
 
 a_=c("heroku")
 a_.add_command(
