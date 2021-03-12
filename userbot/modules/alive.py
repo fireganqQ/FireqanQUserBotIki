@@ -102,7 +102,7 @@ async def _(q):
 
 	try:
 		text, text_2=text
-		if text == "" and text == " ":
+		if text == "":
 			await q.edit("`Gecersiz Değer Girdiniz Değiştire Bileceğiniz Değerler =>` `alive``/``name``/``pic``/``id`")
 			return		
 	except:
@@ -148,3 +148,11 @@ async def _(q):
 			return
 		else:
 			await q.edit("`İd Değişkenini Değiştirmem İçin Bana Bir İd Vermelisim!!`")
+
+a_=c("alive")
+a_.add_command(
+    "alive", "Botun Calışıp Calışmadığını Kontrol Ede Bilirsiniz")
+a_.add_command("adeğiştir","<değişecek_değişken><text>","alive mesajının gifli olup olmamasını ve değişkenlerini ayarlaya bilirsiniz örn: .adeğiştir alive true!")
+a_.add_command("del var <VAR>", "Mevcut Değişkeni Sil")
+a_.add_command("herokulogs", "Size Heroku'daki Son 100 Satırlık Günlükleri Gönderir")
+a_.add()
