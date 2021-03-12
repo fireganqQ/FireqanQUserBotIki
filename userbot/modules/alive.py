@@ -14,7 +14,11 @@ ALİVE_N_ = None
 ALİVE_I_ = None
 ALİVE_P_ = None
 
+id_=None
+ALIVE_PI=None
 def degiskenler():
+	global id_
+	global ALIVE_PI
 	if ALİVE_:
 		if ALİVE_N_:
 			DEFAULTUSER=ALİVE_N_
@@ -49,8 +53,8 @@ async def amireallyalive(a):
 		fg_caption += f"**✧ FireqanqUserBot Sürümü :** `{FİREQANQ_VERSION}`\n"
 		fg_caption += f"**✧ Python Sürümü :** `{python_version()}\n`"
 		fg_caption += f"**✧ Çalışma Süresi :** `{uptime}\n`"
-		fg_caption += f"**✧ Benim Ustam :** {id_}\n"
-		await bot.send_file(a.chat_id, ALIVE_PIC, caption=fg_caption, reply_to=reply_to_id)
+		fg_caption += f"**✧ Benim Ustam :** {str(id_)}\n"
+		await bot.send_file(a.chat_id, str(ALIVE_PI), caption=fg_caption, reply_to=reply_to_id)
 		await a.delete()
 	else:
 		me = await a.client.get_me()
