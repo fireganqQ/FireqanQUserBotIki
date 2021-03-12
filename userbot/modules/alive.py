@@ -152,8 +152,6 @@ async def _(q):
 
 a_=c("alive")
 a_.add_command(
-    "alive", "Botun Calışıp Calışmadığını Kontrol Ede Bilirsiniz")
-a_.add_command("adeğiştir","<değişecek_değişken><text>","alive mesajının gifli olup olmamasını ve değişkenlerini ayarlaya bilirsiniz örn: .adeğiştir alive true!")
-a_.add_command("del var <VAR>", "Mevcut Değişkeni Sil")
-a_.add_command("herokulogs", "Size Heroku'daki Son 100 Satırlık Günlükleri Gönderir")
+    "`alive`", "**Botun Calışıp Calışmadığını Kontrol Ede Bilirsiniz**")
+a_.add_command("`adeğiştir`","`<değişecek_değişken><text>`","**alive mesajının gifli olup olmamasını ve değişkenlerini ayarlaya bilirsiniz örn:** `adeğiştir alive true`")
 a_.add()
