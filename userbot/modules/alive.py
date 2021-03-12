@@ -72,8 +72,8 @@ async def amireallyalive(a):
 		else:
 			await a.edit(fg_caption)
 	else:
-		me = await e.client.get_me()
-		await e.edit(PLUGIN_MESAJLAR['alive'].format(
+		me = await a.client.get_me()
+		await a.edit(PLUGIN_MESAJLAR['alive'].format(
             telethon=version.__version__,
             python=python_version(),
             fireqanq=FİREQANQ_VERSION,
