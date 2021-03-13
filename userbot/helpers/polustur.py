@@ -1,4 +1,3 @@
-from telethon import events
 dosya_name = 0
 def edit_(q, m_split, sleep_t, name):
 	global dosya_name
@@ -19,7 +18,6 @@ async def _(q):
 		q.edit(i)
 		sleep({slep})
 		""")
-	await q.client.send_file(q.chat_id, f, caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
 
 def alt_(q, m_split, sleep_t, name):
 	global dosya_name
@@ -41,4 +39,3 @@ async def _(q):
 		q.edit(text)
 		sleep({slep})
 		""")
-	await q.client.send_file(q.chat_id, f, caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
