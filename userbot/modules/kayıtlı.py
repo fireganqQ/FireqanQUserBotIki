@@ -35,9 +35,9 @@ async def _(qwe):
     return
   except:
     pass
-	mesaj = qwe.pattern_match.group(1)
-	await bot.send_message("me", mesaj)
-	await qwe.edit(msg_)
+  mesaj = qwe.pattern_match.group(1)
+  await bot.send_message("me", mesaj)
+  await qwe.edit(msg_)
   
 
 
