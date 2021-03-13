@@ -41,11 +41,11 @@ def degiskenler():
 async def amireallyalive(a):
 	if a.fwd_from:
 		return
-    try:
-        branch(a)
-        return
-    except:
-    	pass
+	try:
+        	branch(a)
+        	return
+    	except:
+    		pass
 	degiskenler()
 	if ALİVE_:
 		reply_to_id = a.message
