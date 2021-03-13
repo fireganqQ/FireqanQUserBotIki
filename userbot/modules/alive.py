@@ -101,8 +101,8 @@ async def _(q):
         return
     except:
     	pass
-	global ALİVE_
-	global ALİVE_N_
+    global ALİVE_
+    global ALİVE_N_
 	global ALİVE_I_
 	global ALİVE_P_
 
