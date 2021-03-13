@@ -11,7 +11,7 @@ async def _(q):
 		return
 	except:
 		if q.is_reply:
-			mesaj = await q.get_reply()
+			mesaj = await q.get_reply_message()
 			name = q.pattern_match.group(1)
 			sleep_t = q.pattern_match.group(2)
 			sec = q.pattern_match.group(3)
@@ -32,12 +32,12 @@ async def _(q):
 
 					else:
 						if sec == "edit":
-							m_split = mesaj.split("\n")
+							m_split = mesaj#.split("\n")
 							edit_(q, m_split, sleep_t, name)
 							await q.client.send_file(q.chat_id, f"./{dosya_name}.py", caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
 
 						if sec == "alt":
-							m_split = mesaj.split("/e")
+							m_split = mesaj#.split("/e")
 							alt_(q, m_split, sleep_t, name)
 							await q.client.send_file(q.chat_id, f"./{dosya_name}.py", caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
 
