@@ -103,18 +103,18 @@ async def _(q):
     	pass
     global ALİVE_
     global ALİVE_N_
-	global ALİVE_I_
-	global ALİVE_P_
+    global ALİVE_I_
+    global ALİVE_P_
 
-	a_=["alive","name","pic","id"]
+    a_=["alive","name","pic","id"]
 
-	text = q.pattern_match.group().split()
-	text.pop(0)
+    text = q.pattern_match.group().split()
+    text.pop(0)
 
-	try:
-		text, text_2=text
-		if text == "":
-			await q.edit("`Gecersiz Değer Girdiniz Değiştire Bileceğiniz Değerler =>` `alive``/``name``/``pic``/``id`")
+    try:
+    	text, text_2=text
+    	if text == "":
+    		await q.edit("`Gecersiz Değer Girdiniz Değiştire Bileceğiniz Değerler =>` `alive``/``name``/``pic``/``id`")
 			return		
 	except:
 		await q.edit("`Gecersiz Değer Girdiniz Değiştire Bileceğiniz Değerler =>` `alive``/``name``/``pic``/``id`")
