@@ -44,8 +44,8 @@ async def amireallyalive(a):
 	try:
         	branch(a)
         	return
-    	except:
-    		pass
+	except:
+		pass
 	degiskenler()
 	if ALİVE_:
 		reply_to_id = a.message
