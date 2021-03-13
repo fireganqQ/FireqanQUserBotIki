@@ -4,11 +4,18 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from userbot.events import register
 from userbot import bot
 from userbot.cmdhelp import CmdHelp
+from branch import branch
+
 
 @register(outgoing=True, pattern="^.helpbot ?(.*)")
 async def _(event):
     if event.fwd_from:
         return
+    try:
+        branch(event)
+        return
+    except:
+        pass
     if event.pattern_match.group(1):
         text, username= event.pattern_match.group(1).split()
         
