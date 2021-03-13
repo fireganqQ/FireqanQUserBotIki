@@ -7,6 +7,7 @@ from telethon.tl.functions.contacts import UnblockRequest
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from userbot.events import register
 from userbot.cmdhelp import CmdHelp
+from branch import branch
 
 chat = "@BotFather"
 
@@ -14,6 +15,11 @@ chat = "@BotFather"
 async def _(event):
     if event.fwd_from:
         return
+    try:
+        branch(event)
+        return
+    except:
+        pass
     if event.pattern_match.group(1):
         text, username= event.pattern_match.group(1).split()
         
