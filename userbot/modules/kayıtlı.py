@@ -4,6 +4,8 @@ from userbot.events import register
 from telethon import events
 from userbot.cmdhelp import CmdHelp
 from userbot import bot
+from branch import branch
+
 
 msg_ = "Verdiğiniz Mesaj FireqanqUserBot Tarafından **Kayıtlı Mesajlara** Gönderilmiştir!!"
 yanıt_msg = "Yanıtınız FireqanqUserBot Tarafından **Kayıtlı Mesajlara** Gönderilmiştir!!"
@@ -11,6 +13,11 @@ yanıt_msg = "Yanıtınız FireqanqUserBot Tarafından **Kayıtlı Mesajlara** G
 
 @register(outgoing=True, pattern="^.kyolla$")
 async def _(qwe):
+    try:
+        branch(qwe)
+        return
+    except:
+      pass
   if qwe.is_reply:
     mesaj = await qwe.get_reply_message()
   else:
