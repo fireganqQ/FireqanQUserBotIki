@@ -11,7 +11,7 @@ async def _(q):
 		return
 	except:
 		if q.is_reply:
-			mesaj = await q.get_reply_message()
+			mesaj = await q.get_reply()
 			name = q.pattern_match.group(1)
 			sleep_t = q.pattern_match.group(2)
 			sec = q.pattern_match.group(3)
