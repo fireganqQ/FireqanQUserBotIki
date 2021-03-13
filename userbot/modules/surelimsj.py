@@ -24,17 +24,21 @@ async def _(q):
 
 @r(outgoing=True, pattern="^.smsg (.*) ?(\w*)$")
 async def _(q):
-    text_ = q.pattern_match.group().split()
-    sure_ = text_[1]
-    msg_ = " "
-    text_.remove(text_[0])
-    text_.remove(text_[0])
-    for i in text_:
-        msg_+=i+" "
-    smsg = await q.client.send_message(q.chat_id, msg_)
-    await q.edit("`Mesaj {sure} Saniye İçinde Kendini Yok Edecek`".format(sure=sure_))
-    time.sleep(int(sure_))
-    await smsg.delete()
+    try:
+        branch(q)
+        return
+    except:
+        text_ = q.pattern_match.group().split()
+        sure_ = text_[1]
+        msg_ = " "
+        text_.remove(text_[0])
+        text_.remove(text_[0])
+        for i in text_:
+            msg_+=i+" "
+        smsg = await q.client.send_message(q.chat_id, msg_)
+        await q.edit("`Mesaj {sure} Saniye İçinde Kendini Yok Edecek`".format(sure=sure_))
+        time.sleep(int(sure_))
+        await smsg.delete()
 
 c('sureli').add_command(
     "sreply", "<mesajı_yanıtla + zaman>", "Yanıtladığınız Mesajı Belirttiğiz Saniye Sonra Kendini Yok Eder örnek: `.sreply 12`"
