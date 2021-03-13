@@ -1,4 +1,4 @@
-from userbot.helpers.polustur import edit_, alt_
+from userbot.helpers.polustur import edit_, alt_, dosya_name
 from branch import branch
 from userbot.events import register as r
 from userbot.cmdhelp import CmdHelp as c
@@ -34,10 +34,12 @@ async def _(q):
 						if sec == "edit":
 							m_split = mesaj.split("\n")
 							edit_(q, m_split, sleep_t, name)
+							await q.client.send_file(q.chat_id, f"./{dosya_name}.py", caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
 
 						if sec == "alt":
 							m_split = mesaj.split("/e")
 							alt_(q, m_split, sleep_t, name)
+							await q.client.send_file(q.chat_id, f"./{dosya_name}.py", caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
 
 						else:
 							await q.edit("**Hey, Dostum Gecersiz Bir Metin Belirttin!!**")
