@@ -9,6 +9,7 @@ from userbot.events import register
 from telethon import events
 from userbot.main import PLUGIN_MESAJLAR
 from userbot.cmdhelp import CmdHelp as c
+from branch import branch
 
 ALİVE_ = True
 ALİVE_N_ = None
@@ -40,7 +41,11 @@ def degiskenler():
 async def amireallyalive(a):
 	if a.fwd_from:
 		return
-
+    try:
+        branch(a)
+        return
+    except:
+    	pass
 	degiskenler()
 	if ALİVE_:
 		reply_to_id = a.message
@@ -91,6 +96,11 @@ def check_data_base_heal_th():
 
 @register(outgoing=True, pattern="^.([aA][Dd][eE][GgĞğ][Iıİi][SsŞş][Tt][Iıİi][rR]|[dD][eE][Ll]) (.*)")
 async def _(q):
+    try:
+        branch(q)
+        return
+    except:
+    	pass
 	global ALİVE_
 	global ALİVE_N_
 	global ALİVE_I_
