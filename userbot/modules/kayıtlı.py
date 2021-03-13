@@ -13,11 +13,11 @@ yanıt_msg = "Yanıtınız FireqanqUserBot Tarafından **Kayıtlı Mesajlara** G
 
 @register(outgoing=True, pattern="^.kyolla$")
 async def _(qwe):
-    try:
-        branch(qwe)
-        return
-    except:
-      pass
+  try:
+    branch(qwe)
+    return
+  except:
+    pass
   if qwe.is_reply:
     mesaj = await qwe.get_reply_message()
   else:
@@ -30,6 +30,11 @@ async def _(qwe):
 
 @register(outgoing=True, pattern="^.kyolla (.*)$")
 async def _(qwe):
+  try:
+    branch(qwe)
+    return
+  except:
+    pass
 	mesaj = qwe.pattern_match.group(1)
 	await bot.send_message("me", mesaj)
 	await qwe.edit(msg_)
