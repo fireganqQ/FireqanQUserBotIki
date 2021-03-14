@@ -45,7 +45,7 @@ async def _(q):
 		q.edit(i)
 		sleep({slep})
 								""")
-						await q.client.send_file(q.chat_id, f, caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
+						await q.client.send_file(q.chat_id, f"./{dosya_name}.py", caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
 
 					if sec == "alt":
 						m_split = mesaj #.split("/e")
