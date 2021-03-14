@@ -8,18 +8,11 @@ from userbot import BOTLOG, BOTLOG_CHATID, WHITELIST
 from userbot.cmdhelp import CmdHelp
 from userbot.main import PLUGIN_MESAJLAR
 import random
-from branch import branch
 #===============================================================================
 
 
 @register(outgoing=True, pattern=".block (.*)$")
-async def _(block):
-    try:
-        branch(block)
-        return
-    except:
-        pass
-    sebep= block.pattern_match.group(1)
+async def _(block):pattern_match.group(1)
     if block.reply_to_msg_id:
         reply= await block.get_reply_message()
         r_user= await block.client.get_entity(reply.from_id)
