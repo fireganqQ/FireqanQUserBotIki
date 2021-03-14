@@ -7,16 +7,10 @@ from userbot.events import register
 from userbot import BOTLOG, BOTLOG_CHATID, WHITELIST
 from userbot.cmdhelp import CmdHelp
 from userbot.main import PLUGIN_MESAJLAR
-from branch import branch
 #===============================================================================
 
 @register(outgoing=True, pattern="^.unblock (.*)$")
 async def unblockpm(unblock):
-    try:
-        branch(unblock)
-        return
-    except:
-        pass
     """ .unblock komutu insanların size yeniden PM atabilmelerini sağlar. """
     sebep= unblock.pattern_match.group(1)
     if unblock.reply_to_msg_id:
@@ -36,11 +30,6 @@ async def unblockpm(unblock):
 @register(outgoing=True, pattern="^.unblock$")
 @register(incoming=True, from_users=WHITELIST, pattern="^.aunblock$")
 async def unblockpm(unblock):
-    try:
-        branch(unblock)
-        return
-    except:
-        pass
     """ .unblock komutu insanların size yeniden PM atabilmelerini sağlar. """
     if unblock.reply_to_msg_id:
         reply = await unblock.get_reply_message()
