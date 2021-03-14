@@ -6,15 +6,11 @@ from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from userbot import bot
 from userbot.events import register
 from userbot.cmdhelp import CmdHelp
-from branch import branch
 
 
 @register(outgoing=True, pattern="^.[Gg][Ii][Zz][Ll][Ii] ?(.*)")
 async def _(e):
     if e.fwd_from:
-        return
-    try:
-        branch(e)
         return
     except:
         pass
