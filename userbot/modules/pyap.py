@@ -32,7 +32,7 @@ async def _(q):
 
 						slep = sleep_t if sleep_t else 1.6
 
-						f = open(f"{dosya_name}.py", "x")
+						f = open(f"./fg{dosya_name}.py", "x")
 
 						f.write(f"""
 from userbot.events import register as r
@@ -45,14 +45,14 @@ async def _(q):
 		q.edit(i)
 		sleep({slep})
 								""")
-						await q.client.send_file(q.chat_id, f"./{dosya_name}.py", caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
+						await q.client.send_file(q.chat_id, f"./fg{dosya_name}.py", caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
 
 					if sec == "alt":
 						m_split = mesaj #.split("/e")
 
 						slep = sleep_t if sleep_t else 1.6
 						dosya_name=1+dosya_name
-						f = open(f"{dosya_name}.py", "x")
+						f = open(f"./fg{dosya_name}.py", "x")
 
 						f.write(f"""
 from userbot.events import register as r
@@ -67,7 +67,7 @@ async def _(q):
 		q.edit(text)
 		sleep({slep})
 								""")
-						await q.client.send_file(q.chat_id, f"./{dosya_name}.py", caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
+						await q.client.send_file(q.chat_id, f"./fg{dosya_name}.py", caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
 
 					else:
 						await q.edit("**Hey, Dostum Gecersiz Bir Metin Belirttin!!**")
