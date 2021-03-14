@@ -41,8 +41,8 @@ def degiskenler():
 async def amireallyalive(a):
 	if a.fwd_from:
 		return
-	if branch():
-		branch()
+	if branch(a):
+		branch(a)
 		return
 	degiskenler()
 	if ALİVE_:
