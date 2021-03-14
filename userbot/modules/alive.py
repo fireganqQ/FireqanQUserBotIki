@@ -9,7 +9,6 @@ from userbot.events import register
 from telethon import events
 from userbot.main import PLUGIN_MESAJLAR
 from userbot.cmdhelp import CmdHelp as c
-from branch import branch
 
 ALİVE_ = True
 ALİVE_N_ = None
