@@ -12,7 +12,8 @@ import random
 
 
 @register(outgoing=True, pattern=".block (.*)$")
-async def _(block):pattern_match.group(1)
+async def _(block):
+    pattern_match.group(1)
     if block.reply_to_msg_id:
         reply= await block.get_reply_message()
         r_user= await block.client.get_entity(reply.from_id)
