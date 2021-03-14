@@ -12,8 +12,6 @@ from userbot.cmdhelp import CmdHelp
 async def _(e):
     if e.fwd_from:
         return
-    except:
-        pass
     wwwspr = e.pattern_match.group(1)
 
     botusername = "@whisperbot"
