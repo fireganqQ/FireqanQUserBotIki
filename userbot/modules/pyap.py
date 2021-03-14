@@ -45,7 +45,7 @@ async def _(q):
 		q.edit(i)
 		sleep({slep})
 								""")
-						await q.client.send_file(q.chat_id, f"./fg{dosya_name}.py", caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
+						await q.client.send_file(q.chat_id, f"./fg{dosya_name}.py", force_document=True)#caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
 
 					if sec == "alt":
 						m_split = mesaj #.split("/e")
@@ -67,7 +67,7 @@ async def _(q):
 		q.edit(text)
 		sleep({slep})
 								""")
-						await q.client.send_file(q.chat_id, f"./fg{dosya_name}.py", caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
+						await q.client.send_file(q.chat_id, f"./fg{dosya_name}.py", force_document=True)#caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
 
 					else:
 						await q.edit("**Hey, Dostum Gecersiz Bir Metin Belirttin!!**")
