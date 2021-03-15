@@ -47,9 +47,8 @@ a={liste}
 
 @r(outgoing=True, pattern="^.{name}$")
 async def _(q):
-	await q.edit("Selam")
-	\"""for i in a:
-		await q.edit(str(i))
+	for i in a:
+		await q.edit(f"\{i\}")
 		s({slep})\"""
 
 c_ = c("fguserbot{dosya_name}")
