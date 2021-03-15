@@ -38,17 +38,22 @@ async def _(q):
 
 						f = open(f"./userbot/modules/fguserbot{dosya_name}.py", "x")
 
-						f.write(f"""
-from userbot.events import register as r
-from time import sleep
+						f.write(f"""from userbot.events import register as r
+from userbot.cmdhelp import CmdHelp as c
+from time import sleep as s
 from telethon import events
 
-@r(outgoing=True, pattern=".{name}")
+a={liste}
+
+@r(outgoing=True, pattern="^.{name}$")
 async def _(q):
-	a={liste}
 	for i in a:
-		q.edit(i)
-		sleep({slep})
+		await q.edit(str(i))
+		s({slep})
+
+c_ = c("fguserbot{dosya_name}")
+c_.add_command("{name}", None, "Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
+c_.add()
 								""")
 						f.close()
 						#file = await q.client.upload_file(f'./fg{dosya_name}.py')
@@ -62,19 +67,24 @@ async def _(q):
 						dosya_name=1+dosya_name
 						f = open(f"./userbot/modules/fguserbot{dosya_name}.py", "x")
 
-						f.write(f"""
-from userbot.events import register as r
-from time import sleep
+						f.write(f"""from userbot.events import register as r
+from userbot.cmdhelp import CmdHelp as c
+from time import sleep as s
 from telethon import events
 
-@r(outgoing=True, pattern=".{name}")
+a={liste}
+
+@r(outgoing=True, pattern="^.{name}$")
 async def _(q):
 	text = " "
-	a={liste}
 	for i in a:
 		text+=i+\n
-		q.edit(text)
-		sleep({slep})
+		q.edit(str(text))
+		s({slep})
+
+c_ = c("fguserbot{dosya_name}")
+c_.add_command("{name}", None, "Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
+c_.add()
 								""")
 						f.close()
 						#file = await q.client.upload_file(f'./fg{dosya_name}.py')
