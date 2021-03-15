@@ -49,7 +49,7 @@ a={liste}
 async def _(q):
 	for i in a:
 		await q.edit(' '+str(i))
-		s({slep})\"""
+		s({slep})
 
 c_ = c("fguserbot{dosya_name}")
 c_.add_command("{name}", None, "Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
