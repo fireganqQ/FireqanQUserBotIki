@@ -1,6 +1,7 @@
 from userbot.events import register as r
 from userbot.cmdhelp import CmdHelp as c
 from telethon import events
+import os
 
 dosya_name=0
 @r(outgoing=True, pattern="^.polu[sş]tur (.*) (.*) (edit|alt)$")
