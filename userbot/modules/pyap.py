@@ -105,3 +105,7 @@ c_.add()
 	else:
 		await q.edit("**Hey, Dostum Bir Mesajı Yanıtlamalısın!!**")
 		return
+
+c_ = c("pyap")
+c_.add_command("poluştur", "<pluginin_komutu> <plugin_hızı> <edit/alt> ", "@FireqanqUserBot Sizin İçin Bir User Bot Oluşturur...")
+c_.add()
