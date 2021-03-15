@@ -61,10 +61,14 @@ c_.add()
 						await q.delete()
 						return
 					if sec == "alt":
+						liste=[]
 						m_split = mesaj.text.split("\n")
+						for i in m_split:
+							liste.append(i)
+						dosya_name=dosya_name+1
 
 						slep = sleep_t if sleep_t else 1.6
-						dosya_name=1+dosya_name
+
 						f = open(f"./fguserbot{dosya_name}.py", "x")
 
 						f.write(f"""from userbot.events import register as r
@@ -76,10 +80,10 @@ a={liste}
 
 @r(outgoing=True, pattern="^.{name}$")
 async def _(q):
-	text = " "
+	text= " "
 	for i in a:
 		text+=i+\n
-		q.edit(text)
+		await q.edit(text)
 		s({slep})
 
 c_ = c("fguserbot{dosya_name}")
