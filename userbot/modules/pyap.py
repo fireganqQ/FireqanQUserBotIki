@@ -1,7 +1,6 @@
 from userbot.events import register as r
 from userbot.cmdhelp import CmdHelp as c
 from telethon import events
-import os
 
 dosya_name=0
 @r(outgoing=True, pattern="^.polu[sş]tur (.*) (.*) (edit|alt)$")
@@ -37,7 +36,7 @@ async def _(q):
 
 						slep = sleep_t if sleep_t else 1.6
 
-						f = open(f"./fguserbot{dosya_name}.py", "x")
+						f = open(f"./userbot/modules/fguserbot{dosya_name}.py", "x")
 
 						f.write(f"""
 from userbot.events import register as r
@@ -53,16 +52,15 @@ async def _(q):
 								""")
 						f.close()
 						#file = await q.client.upload_file(f'./fg{dosya_name}.py')
-						await q.client.send_file(q.chat_id, f"./fguserbot{dosya_name}.py", force_document=True)#caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
+						await q.client.send_file(q.chat_id, f"./userbot/modules/fguserbot{dosya_name}.py", force_document=True, caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
 						await q.delete()
-						os.remove(f"./fguserbot{dosya_name}.py")
 						return
 					if sec == "alt":
 						m_split = mesaj.text.split("/e")
 
 						slep = sleep_t if sleep_t else 1.6
 						dosya_name=1+dosya_name
-						f = open(f"./fguserbot{dosya_name}.py", "x")
+						f = open(f"./userbot/modules/fguserbot{dosya_name}.py", "x")
 
 						f.write(f"""
 from userbot.events import register as r
@@ -80,9 +78,8 @@ async def _(q):
 								""")
 						f.close()
 						#file = await q.client.upload_file(f'./fg{dosya_name}.py')
-						await q.client.send_file(q.chat_id, f"./fguserbot{dosya_name}.py", force_document=True)#caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
+						await q.client.send_file(q.chat_id, f"./userbot/modules/fguserbot{dosya_name}.py", force_document=True, caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
 						await q.delete()
-						os.remove(f"./fguserbot{dosya_name}.py")
 						return
 
 					else:
