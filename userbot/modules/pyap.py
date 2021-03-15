@@ -61,7 +61,7 @@ c_.add()
 						await q.delete()
 						return
 					if sec == "alt":
-						m_split = mesaj.text.split("/e")
+						m_split = mesaj.text.split("\\")
 
 						slep = sleep_t if sleep_t else 1.6
 						dosya_name=1+dosya_name
