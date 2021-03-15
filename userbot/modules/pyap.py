@@ -2,9 +2,10 @@ from userbot.events import register as r
 from userbot.cmdhelp import CmdHelp as c
 from telethon import events
 
+dosya_name=0
 @r(outgoing=True, pattern="^.polu[sş]tur (.*) (.*) (edit|alt)$")
 async def _(q):
-	dosya_name = 0
+	global dosya_name
 	if q.is_reply:
 		mesaj = await q.get_reply_message()
 		name = q.pattern_match.group(1)
@@ -27,8 +28,11 @@ async def _(q):
 
 				else:
 					if sec == "edit":
-						m_split = mesaj#.split("\n")
-						dosya_name=1+dosya_name
+						liste=[]
+						m_split = mesaj.split("\n")
+						for i in m_split:
+							liste.append(i)
+						dosya_name=dosya_name+1
 
 						slep = sleep_t if sleep_t else 1.6
 
@@ -41,17 +45,18 @@ from telethon import events
 
 @r(outgoing=True, pattern=".{name}")
 async def _(q):
-	for i in {m_split}:
+	a={liste}
+	for i in a:
 		q.edit(i)
 		sleep({slep})
 								""")
 						f.close()
 						#file = await q.client.upload_file(f'./fg{dosya_name}.py')
 						await q.client.send_file(q.chat_id, f"./fg{dosya_name}.py", force_document=True)#caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
-						await event.delete()
+						await q.delete()
 						# os.remove(indir)
 					if sec == "alt":
-						m_split = mesaj #.split("/e")
+						m_split = mesaj.split("/e")
 
 						slep = sleep_t if sleep_t else 1.6
 						dosya_name=1+dosya_name
@@ -65,15 +70,16 @@ from telethon import events
 @r(outgoing=True, pattern=".{name}")
 async def _(q):
 	text = " "
-	for i in {m_split}:
-		text+=i
+	a={liste}
+	for i in a:
+		text+=i+\n
 		q.edit(text)
 		sleep({slep})
 								""")
 						f.close()
 						#file = await q.client.upload_file(f'./fg{dosya_name}.py')
 						await q.client.send_file(q.chat_id, f"./fg{dosya_name}.py", force_document=True)#caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
-						await event.delete()
+						await q.delete()
 						# os.remove(indir)
 
 					else:
