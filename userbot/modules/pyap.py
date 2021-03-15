@@ -29,7 +29,7 @@ async def _(q):
 				else:
 					if sec == "edit":
 						liste=[]
-						m_split = mesaj.split("\n")
+						m_split = mesaj.text.split("\n")
 						for i in m_split:
 							liste.append(i)
 						dosya_name=dosya_name+1
@@ -56,7 +56,7 @@ async def _(q):
 						await q.delete()
 						# os.remove(indir)
 					if sec == "alt":
-						m_split = mesaj.split("/e")
+						m_split = mesaj.text.split("/e")
 
 						slep = sleep_t if sleep_t else 1.6
 						dosya_name=1+dosya_name
