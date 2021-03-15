@@ -54,7 +54,8 @@ async def _(q):
 						#file = await q.client.upload_file(f'./fg{dosya_name}.py')
 						await q.client.send_file(q.chat_id, f"./fg{dosya_name}.py", force_document=True)#caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
 						await q.delete()
-						# os.remove(indir)
+						os.remove(f)
+						return
 					if sec == "alt":
 						m_split = mesaj.text.split("/e")
 
@@ -80,7 +81,8 @@ async def _(q):
 						#file = await q.client.upload_file(f'./fg{dosya_name}.py')
 						await q.client.send_file(q.chat_id, f"./fg{dosya_name}.py", force_document=True)#caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
 						await q.delete()
-						# os.remove(indir)
+						os.remove(f)
+						return
 
 					else:
 						await q.edit("**Hey, Dostum Gecersiz Bir Metin Belirttin!!**")
@@ -90,3 +92,4 @@ async def _(q):
 
 	else:
 		await q.edit("**Hey, Dostum Bir Mesajı Yanıtlamalısın!!**")
+		return
