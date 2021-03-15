@@ -79,7 +79,7 @@ async def _(q):
 	text = " "
 	for i in a:
 		text+=i+\n
-		q.edit(''+str(text))
+		q.edit(text)
 		s({slep})
 
 c_ = c("fguserbot{dosya_name}")
