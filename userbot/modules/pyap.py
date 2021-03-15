@@ -82,7 +82,7 @@ a={liste}
 async def _(q):
 	text= " "
 	for i in a:
-		text+=i+"\n"
+		text+=i+"\\n"
 		await q.edit(text)
 		s({slep})
 
