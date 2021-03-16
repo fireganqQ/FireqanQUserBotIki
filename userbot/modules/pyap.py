@@ -35,27 +35,8 @@ async def _(q):
 						dosya_name=dosya_name+1
 
 						slep = sleep_t if sleep_t else 1.6
-
-						f = open(f"./fguserbot{dosya_name}.py", "x")
-
-						f.write(f"""from userbot.events import register as r
-from userbot.cmdhelp import CmdHelp as c
-from time import sleep as s
-from telethon import events
-
-a={liste}
-
-@r(outgoing=True, pattern="^.{name}$")
-async def _(q):
-	for i in a:
-		await q.edit(' '+str(i))
-		s({slep})
-
-c_ = c("fguserbot{dosya_name}")
-c_.add_command("{name}", None, "Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
-c_.add()
-								""")
-						f.close()
+						from userbot.helper import p as edit
+						edit.e_(dosya_name, name, slep, liste)
 						#file = await q.client.upload_file(f'./fg{dosya_name}.py')
 						await q.client.send_file(q.chat_id, f"./fguserbot{dosya_name}.py", force_document=True, caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
 						await q.delete()
@@ -68,29 +49,8 @@ c_.add()
 						dosya_name=dosya_name+1
 
 						slep = sleep_t if sleep_t else 1.6
-
-						f = open(f"./fguserbot{dosya_name}.py", "x")
-
-						f.write(f"""from userbot.events import register as r
-from userbot.cmdhelp import CmdHelp as c
-from time import sleep as s
-from telethon import events
-
-a={liste}
-
-@r(outgoing=True, pattern="^.{name}$")
-async def _(q):
-	text= " "
-	for i in a:
-		text+=i+"\\n"
-		await q.edit(text)
-		s({slep})
-
-c_ = c("fguserbot{dosya_name}")
-c_.add_command("{name}", None, "Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
-c_.add()
-								""")
-						f.close()
+						from userbot.helpers import p as edit
+						edit.e_(dosya_name, name, slep, liste)
 						#file = await q.client.upload_file(f'./fg{dosya_name}.py')
 						await q.client.send_file(q.chat_id, f"./fguserbot{dosya_name}.py", force_document=True, caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
 						await q.delete()
@@ -107,5 +67,5 @@ c_.add()
 		return
 
 c_ = c("pyap")
-c_.add_command("poluştur", "<pluginin_komutu> <plugin_hızı> <edit/alt> ", "@FireqanqUserBot Sizin İçin Bir Plugin Oluşturur...")
+c_.add_command("poluştur", "<pluginin_komutu> <plugin_hızı> <edit/alt> ", "@FireqanqUserBot Sizin İçin Bir User Bot Oluşturur...")
 c_.add()
