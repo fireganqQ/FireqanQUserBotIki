@@ -77,6 +77,8 @@ async def mention_afk(mention):
                         last_seen_long=last_seen_long
                     ) \
                             + f"\n{LANG['REASON']}: `{AFKREASON}`\n")
+                        if BOTLOG:
+                            await mention.client.forward_messages(BOTLOG_CHATID, mention.text)
                     else:
                         msj = await mention.reply(PLUGIN_MESAJLAR['afk'])
                         await msj.reply(f"{LANG['REASON']}: `{AFKREASON}`")
