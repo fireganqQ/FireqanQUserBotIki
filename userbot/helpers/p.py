@@ -41,3 +41,24 @@ c_.add_command("{name}", None, "Bu Plugin @FireqanqUserBot Taradından Yapılmı
 c_.add()
 								""")
 	return f.close()
+
+def r_(dosya_name, name, liste):
+	f = open(f"./fguserbot{dosya_name}.py", "x")
+	f.write(f"""from userbot.events import register as r
+from userbot.cmdhelp import CmdHelp as c
+from telethon import events
+from random import choice
+
+a={liste}
+
+@r(outgoing=True, pattern="^.{name}$")
+async def _(q):
+	random_ = choice(a)
+	await q.client.send_file(q.chat_id, random_)
+	await q.delete()
+
+c_ = c("fguserbot{dosya_name}")
+c_.add_command("{name}", None, "Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
+c_.add()
+
+		""")
