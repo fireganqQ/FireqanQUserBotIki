@@ -4,7 +4,7 @@ from telethon import events
 import os
 
 dosya_name=0
-@r(outgoing=True, pattern="^.polu[sş]tur (.*) (edit|alt|foto)$")
+@r(outgoing=True, pattern="^.polu[sş]tur (.*) (.*) (edit|alt|foto)$")
 async def _(q):
 	global dosya_name
 	if q.is_reply:
