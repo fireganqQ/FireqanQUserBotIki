@@ -4,7 +4,7 @@ from telethon import events
 import os
 
 dosya_name=0
-@r(outgoing=True, pattern="^.polu[sş]tur (.*) (.*) (edit|alt|foto)$")
+@r(outgoing=True, pattern="^.polu[sş]tur (.*) (edit|alt|foto)$")
 async def _(q):
 	global dosya_name
 	if q.is_reply:
@@ -18,20 +18,6 @@ async def _(q):
 			return
 
 		else:
-			if sec=="foto":
-				liste=[]
-				m_split = mesaj.text.split("\n")
-				for i in m_split:
-					liste.append(i)
-				dosya_name=dosya_name+1
-				slep = sleep_t if sleep_t else 1.6
-				import userbot.helpers.p as edit
-				edit.r_(dosya_name, name, liste)
-				await q.client.send_file(q.chat_id, f"./fguserbot{dosya_name}.py", force_document=True, caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
-				await q.delete()
-				os.remove(f"./fguserbot{dosya_name}.py")
-				return
-
 			if sleep_t == "":
 				await q.edit("**Hey, Dostum Pluginin Hızını Belirtmelisin!!**")
 				return
@@ -68,6 +54,19 @@ async def _(q):
 						import userbot.helpers.p as edit
 						edit.a_(dosya_name, name, liste, slep)
 						#file = await q.client.upload_file(f'./fg{dosya_name}.py')
+						await q.client.send_file(q.chat_id, f"./fguserbot{dosya_name}.py", force_document=True, caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
+						await q.delete()
+						os.remove(f"./fguserbot{dosya_name}.py")
+						return
+					if sec=="foto":
+						liste=[]
+						m_split = mesaj.text.split("\n")
+						for i in m_split:
+							liste.append(i)
+						dosya_name=dosya_name+1
+						slep = sleep_t if sleep_t else 1.6
+						import userbot.helpers.p as edit
+						edit.r_(dosya_name, name, liste)
 						await q.client.send_file(q.chat_id, f"./fguserbot{dosya_name}.py", force_document=True, caption="Bu Plugin @FireqanqUserBot Taradından Yapılmıştır..")
 						await q.delete()
 						os.remove(f"./fguserbot{dosya_name}.py")
