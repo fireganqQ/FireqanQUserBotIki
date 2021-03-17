@@ -90,8 +90,8 @@ async def mention_afk(mention):
                             try:
                                 reply = await mention.client.send_message(BOTLOG_CHATID, f"__Siz Afk İken Mesaj Gönderdi:__\n**Kullanıcı:** {mention_format}\n**Chat:** {mention.chat.title}(`{mention.chat_id}`)\n↘️ **Mesaj** ↙️")
                                 await reply.reply(mention.text)
-                        except:
-                            pass
+                            except:
+                                pass
                 else:
                     if not isinstance(PLUGIN_MESAJLAR['afk'], str):
                         PLUGIN_MESAJLAR['afk'].text = PLUGIN_MESAJLAR['afk'].text.format(
