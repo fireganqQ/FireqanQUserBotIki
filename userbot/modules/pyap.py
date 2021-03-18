@@ -85,5 +85,5 @@ async def _(q):
 		return
 
 c_ = c("pyap")
-c_.add_command("poluştur", "<pluginin_komutu> <plugin_hızı> <edit/alt> ", "@FireqanqUserBot Sizin İçin Bir User Bot Oluşturur...")
+c_.add_command("poluştur", "<pluginin_komutu> <plugin_hızı> <edit/alt/foto> ", "@FireqanqUserBot Sizin İçin Bir User Bot Oluşturur...")
 c_.add()
