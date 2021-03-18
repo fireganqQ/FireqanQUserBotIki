@@ -43,7 +43,7 @@ def ipucu(kelime):
 	if kelime == "telefon":
 		text+="**Şuan Elinde Tuttuğun Cihaz?**"
 	if kelime == "internet":
-	text+="**İnternet Sitesi v.b. Girmenizi Sağlayan Bir Teknoloji?**"
+		text+="**İnternet Sitesi v.b. Girmenizi Sağlayan Bir Teknoloji?**"
 	if kelime == "market":
 		text+="**Alışveriş Yaptığımız Yer?**"
 	if kelime == "avm":
