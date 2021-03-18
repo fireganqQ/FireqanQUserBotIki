@@ -58,3 +58,4 @@ emoji-country-flag
 cairosvg
 imagedown
 googletrans
+pyfiglet
