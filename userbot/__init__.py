@@ -66,7 +66,7 @@ if not LANGUAGE in ["TR", "AZ", "DEFAULT"]:
     LANGUAGE = "DEFAULT"
 
 
-FİREQANQ_VERSION = "v1.12.12"
+FİREQANQ_VERSION = "v1.16.14"
 
 # Telegram API KEY ve HASH
 API_KEY = os.environ.get("API_KEY", None)
