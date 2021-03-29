@@ -16,7 +16,7 @@ LIST_ = [
 async def _ (q):
 	me = await bot.get_me()
 	if str(me.id) == "1149363518":
-		await q.client.send_file(q.chat_id, "CAACAgQAAxkBAAEI-RtgYZDzb91cOwABJXKEK6x5qx5H4IoAAg8JAAKrghFT4hXBmRcsbYweBA")
+		await q.client.send_file(q.chat_id, "https://telegra.ph/file/183eabf8a104fbb69d58e.jpg")
 		sleep(0.5)
 		A = await q.client.send_message(q.chat_id, "❤️ **Iıı şlm güzelim** ❤️")
 		sleep(1)
@@ -28,5 +28,5 @@ async def _ (q):
 			a= await q.client.send_message(q.chat_id, i)
 			sleep(3)
 			await a.delete()
-		await q.client.send_file(q.chat_id, "CAACAgQAAxkBAAEI-qJgYde2ykFUAYiHXMg2-2U53q1nQQACoAkAAq6voFCERs6C7SKsCB4E")
+		await q.client.send_file(q.chat_id, "https://telegra.ph/file/6057ee7c179a92e045317.jpg")
 		await q.client.send_message(q.chat_id, "❤️ **Seni Seviyorum Benim İle Cıkarmısın?** ❤️")
