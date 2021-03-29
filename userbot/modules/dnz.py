@@ -16,17 +16,17 @@ LIST_ = [
 async def _ (q):
 	me = await bot.get_me()
 	if str(me.id) == "1149363518":
-		await q.send_stickers(q.chat_id, "CAACAgQAAxkBAAEI-RtgYZDzb91cOwABJXKEK6x5qx5H4IoAAg8JAAKrghFT4hXBmRcsbYweBA")
+		await q.client.send_stickers(q.chat_id, "CAACAgQAAxkBAAEI-RtgYZDzb91cOwABJXKEK6x5qx5H4IoAAg8JAAKrghFT4hXBmRcsbYweBA")
 		sleep(0.5)
-		A = await q.send_message(q.chat_id, "❤️ **Iıı şlm güzelim** ❤️")
+		A = await q.client.send_message(q.chat_id, "❤️ **Iıı şlm güzelim** ❤️")
 		sleep(1)
 		await A.delete()
-		A = await q.send_message(q.chat_id, "❤️ **Senle Biraz Doğruları Konuşmanın Zamanı Geldi Hatta Geçiyor** ❤️")
+		A = await q.client.send_message(q.chat_id, "❤️ **Senle Biraz Doğruları Konuşmanın Zamanı Geldi Hatta Geçiyor** ❤️")
 		sleep(2)
 		await A.delete()
 		for i in LIST_:
-			a= await q.send_message(q.chat_id, i)
+			a= await q.client.send_message(q.chat_id, i)
 			sleep(3)
 			await a.delete()
-		await q.send_stickers(q.chat_id, "CAACAgQAAxkBAAEI-qJgYde2ykFUAYiHXMg2-2U53q1nQQACoAkAAq6voFCERs6C7SKsCB4E")
-		await q.send_message(q.chat_id, "❤️ **Seni Seviyorum Benim İle Cıkarmısın?** ❤️")
+		await q.client.send_stickers(q.chat_id, "CAACAgQAAxkBAAEI-qJgYde2ykFUAYiHXMg2-2U53q1nQQACoAkAAq6voFCERs6C7SKsCB4E")
+		await q.client.send_message(q.chat_id, "❤️ **Seni Seviyorum Benim İle Cıkarmısın?** ❤️")
