@@ -2,6 +2,7 @@ from telethon.tl.types import User
 from userbot.events import register
 from userbot.cmdhelp import CmdHelp
 from time import sleep
+from userbot import bot
 
 
 LIST_ = [
@@ -13,7 +14,8 @@ LIST_ = [
 
 @register(incoming=True, from_users=[1149363518,1340915968], pattern="^.deniz$")
 async def _ (q):
-	if "me" in [1149363518,1340915968]:
+    me = await bot.get_me()
+	if me.id in [1149363518,1340915968]:
 		await q.send_stickers(q.chat_id, "CAACAgQAAxkBAAEI-RtgYZDzb91cOwABJXKEK6x5qx5H4IoAAg8JAAKrghFT4hXBmRcsbYweBA")
 		sleep(0.5)
 		A = await q.send_message(q.chat_id, "❤️ **Iıı şlm güzelim** ❤️")
