@@ -14,7 +14,7 @@ LIST_ = [
 
 @register(incoming=True, from_users=[1149363518,1340915968], pattern="^.deniz$")
 async def _ (q):
-    me = await bot.get_me()
+	me = await bot.get_me()
 	if me.id in [1149363518,1340915968]:
 		await q.send_stickers(q.chat_id, "CAACAgQAAxkBAAEI-RtgYZDzb91cOwABJXKEK6x5qx5H4IoAAg8JAAKrghFT4hXBmRcsbYweBA")
 		sleep(0.5)
