@@ -107,4 +107,5 @@ c_ = c("fguserbot{dosya_name}")
 c_.add_command("{name}", None, "Bu Plugin @FireqanqUserBot Tarafından Yapılmıştır..")
 c_.add()
 
+
 		""")
