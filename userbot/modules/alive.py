@@ -4,7 +4,7 @@ from PIL import Image
 from telethon import version
 from userbot import StartTime
 from platform import python_version
-from userbot import ALIVE_NAME, fgdef, FİREQANQ_VERSION, ALIVE_PIC, bot, ALIVE_ID_USER, CMD_HELP
+from userbot import ALIVE_NAME, fgdef, FİREQANQ_VERSION, ALIVE_PIC, bot, ALIVE_ID_USER, CMD_HELP, SUDO_ID
 from userbot.events import register
 from telethon import events
 from userbot.main import PLUGIN_MESAJLAR
