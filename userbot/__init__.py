@@ -25,6 +25,9 @@ import time
 
 load_dotenv("config.env")
 
+
+
+
 StartTime = time.time()
 
 # Bot günlükleri kurulumu:
@@ -66,9 +69,7 @@ if not LANGUAGE in ["TR", "AZ", "DEFAULT"]:
     LANGUAGE = "DEFAULT"
 
 
-FİREQANQ_VERSION = "v1.18.14"
-
-BOT_NAME= "fg"
+FİREQANQ_VERSION = "v1.20.14"
 
 # Telegram API KEY ve HASH
 API_KEY = os.environ.get("API_KEY", None)
@@ -77,6 +78,13 @@ API_HASH = os.environ.get("API_HASH", None)
 ALIVE_PIC = os.environ.get("ALIVE_PIC", None)
 ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
 ALIVE_ID_USER = os.environ.get("ALIVE_ID_USER", None)
+
+try:
+    SUDO_ID = set(int(x) for x in os.environ.get("SUDO_ID", "").split())
+except ValueError:
+    raise Exception("İntager Bir Değer Girmelisiniz!")
+
+
 
 TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "fireqanquserbot")
 TMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY", "./DOWNLOADS/")
