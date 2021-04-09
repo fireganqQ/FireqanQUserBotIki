@@ -13,7 +13,7 @@ from asyncio import sleep
 
 from telethon.errors import rpcbaseerrors
 
-from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP
+from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP,SUDO_ID
 from userbot.events import register
 from userbot.cmdhelp import CmdHelp
 
@@ -25,6 +25,7 @@ LANG = get_value("purge")
 # ████████████████████████████████ #
 
 @register(outgoing=True, pattern="^.purge$")
+@register(incoming=True, from_users=SUDO_ID, pattern="^.spurge$")
 async def fastpurger(purg):
     """ .purge komutu hedeflenen yanıttan başlayarak tüm mesajları temizler. """
     chat = await purg.get_input_chat()
@@ -58,6 +59,7 @@ async def fastpurger(purg):
 
 
 @register(outgoing=True, pattern="^.purgeme")
+@register(incoming=True, from_users=SUDO_ID, pattern="^.spurgeme$")
 async def purgeme(delme):
     """ .purgeme komutu belirtilen miktarda kullanıcın mesajlarını siler. """
     message = delme.text
@@ -85,6 +87,7 @@ async def purgeme(delme):
 
 
 @register(outgoing=True, pattern="^.del$")
+@register(incoming=True, from_users=SUDO_ID, pattern="^.sdel$")
 async def delete_it(delme):
     """ .del komutu yanıtlanan mesajı siler. """
     msg_src = await delme.get_reply_message()
@@ -120,7 +123,7 @@ async def editer(edit):
                                        "Mesaj düzenleme sorgusu başarıyla yürütüldü")
 
 
-@register(outgoing=True, pattern="^.sd")
+@register(outgoing=True, pattern="^.sd$")
 async def selfdestruct(destroy):
     """ .sd komutu kendi kendine yok edilebilir mesajlar yapar. """
     message = destroy.text
@@ -144,4 +147,12 @@ CmdHelp('purge').add_command(
     'edit', '<yeni mesaj>', 'Yanıt verdiğiniz mesajı yeni mesaj ile değiştirir.'
 ).add_command(
     'sd', '<x> <mesaj>', 'x saniye içinde kendini yok eden bir mesaj oluşturur.'
+).add()
+
+CmdHelp('spurge').add_command(
+    'spurge', None, 'Hedeflenen yanıttan başlayarak tüm mesajları temizler.'
+).add_command(
+    'spurgeme', '<sayı>', 'Hedeflenen yanıttan başlayarak kendi mesajlarınızı temizler.'
+).add_command(
+    'sdel', '<yanıt>', 'Yanıt verilen mesajı siler.'
 ).add()
