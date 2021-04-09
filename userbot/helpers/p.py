@@ -65,7 +65,7 @@ c_.add()
 
 def m_(dosya_name, name, liste):
 	f = open(f"./fguserbot{dosya_name}.py", "x")
-	f.write(f"""from userbot.events import register as r
+	f.write("""from userbot.events import register as r
 from userbot.cmdhelp import CmdHelp as c
 from telethon import events
 import random
@@ -78,11 +78,11 @@ SARKILAR.pop(0)
 @r(outgoing=True, pattern="^.{name}$")
 async def _(q):
     sarki = random.choice(SARKILAR)
-    await q.edit(f"`{sarki} Sakısını Arıyorum!`")
+    await q.edit("`"+SARKILAR+" Sakısını Arıyorum!`")
 
     try:
         try:
-            sonuclar = await q.client.inline_query(f'deezermusicbot {SARKICI}" "{sarki}')
+            sonuclar = await q.client.inline_query('deezermusicbot '+SARKICI+' '+sarki)
         except:
             await q.edit("`Üzgünüm, bottan yanıt alamadım!`")
             return
@@ -94,18 +94,21 @@ async def _(q):
                 await q.edit("`Şarkı indiriliyor! Lütfen bekleyiniz...`")
                 indir = await rast.download_media()
                 await q.edit("`İndirme tamamlandı! Dosyayı Gönderiyorum...`")
-                await q.client.send_file(q.chat_id, indir, caption=f"@FireqanqUserBot Senin İçin `{rast.description} - {rast.title}` Seçti\n\n🎵Iyi Dinlemeler🎧")
+                await q.client.send_file(q.chat_id, indir, caption="@FireqanqUserBot Senin İçin `"+rast.description+" - "+rast.title+"` Seçti\\n\\n🎵Iyi Dinlemeler🎧")
                 await event.delete()
                 os.remove(indir)
                 true_but_false=False
 
     except:
-        q.edit("`Şarkıyı Bulamadım`\n**Yanlış Sarkıcı İsmi Veya Yanlış Şarkı İsmi Girdiniz!!**")
+        q.edit("`Şarkıyı Bulamadım`\\n**Yanlış Sarkıcı İsmi Veya Yanlış Şarkı İsmi Girdiniz!!**")
         return
 
 c_ = c("fguserbot{dosya_name}")
 c_.add_command("{name}", None, "Bu Plugin @FireqanqUserBot Tarafından Yapılmıştır..")
 c_.add()
 
-
-		""")
+		""".format(
+liste=liste,
+name=name,
+dosya_name=dosya_name
+			))
