@@ -296,6 +296,7 @@ async def promote(promt):
                                  pin_messages=True)
 
     await promt.edit(LANG['PROMOTING'])
+    await promt.client.send_message(promt.chat_id, LANG['PROMOTING'])
     user, rank = await get_user_from_event(promt)
     if not rank:
         rank = "Yönetici"  # Her ihtimale karşı.
@@ -309,11 +310,13 @@ async def promote(promt):
         await promt.client(
             EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
         await promt.edit(LANG['SUCCESS_PROMOTE'])
+        await promt.client.send_message(promt.chat_id, LANG['SUCCESS_PROMOTE'])
 
     # Telethon BadRequestError hatası verirse
     # yönetici yapma yetkimiz yoktur
     except:
         await promt.edit(NO_PERM)
+        await promt.client.send_message(promt.chat_id, NO_PERM)
         return
 
     # Yetkilendirme işi başarılı olursa günlüğe belirtelim
@@ -336,10 +339,12 @@ async def demote(dmod):
 
     if not admin and not creator:
         await dmod.edit(NO_ADMIN)
+        await dmod.client.send_message(dmod.chat_id, NO_ADMIN)
         return
 
     # Eğer başarılı olursa, yetki düşürüleceğini beyan edelim
     await dmod.edit(LANG['UNPROMOTING'])
+    await dmod.client.send_message(dmod.chat_id, LANG['UNPROMOTING'])
     rank = "admeme"  # Burayı öylesine yazdım
     user = await get_user_from_event(dmod)
     user = user[0]
@@ -364,8 +369,10 @@ async def demote(dmod):
     # gerekli yetkimiz yoktur
     except:
         await dmod.edit(NO_PERM)
+        await dmod.client.send_message(dmod.chat_id, NO_PERM)
         return
     await dmod.edit(LANG['UNPROMOTE'])
+    await dmod.client.send_message(dmod.chat_id, LANG['UNPROMOTE'])
 
     # Yetki düşürme işi başarılı olursa günlüğe belirtelim
     if BOTLOG:
@@ -387,6 +394,7 @@ async def ban(bon):
 
     if not admin and not creator:
         await bon.edit(NO_ADMIN)
+        await bon.client.send_message(bon.chat_id, NO_ADMIN)
         return
 
     user, reason = await get_user_from_event(bon)
@@ -400,16 +408,19 @@ async def ban(bon):
         await bon.edit(
             LANG['BRAIN']
         )
+        await bon.client.send_message(bon.chat_id, LANG['BRAIN'])
         return
 
     # Hedefi yasaklayacağınızı duyurun
     await bon.edit(LANG['BANNING'])
+    await bon.client.send_message(bon.chat_id, LANG['BANNING'])
 
     try:
         await bon.client(EditBannedRequest(bon.chat_id, user.id,
                                            BANNED_RIGHTS))
     except:
         await bon.edit(NO_PERM)
+        await bon.client.send_message(bon.chat_id, NO_PERM)
         return
     # Spamcılar için
     try:
@@ -419,6 +430,7 @@ async def ban(bon):
     except:
         await bon.edit(
             LANG['NO_PERM_BUT_BANNED'])
+        await bon.client.send_message(bon.chat_id, LANG['NO_PERM_BUT_BANNED'])
         return
     # Mesajı silin ve ardından komutun
     # incelikle yapıldığını söyleyin
@@ -434,8 +446,10 @@ async def ban(bon):
     
     if reason:
         await bon.edit(f"{SONMESAJ}\n{LANG['REASON']}: {reason}")
+        await bon.client.send_message(bon.chat_id, f"{SONMESAJ}\n{LANG['REASON']}: {reason}")
     else:
         await bon.edit(SONMESAJ)
+        await bon.client.send_message(bon.chat_id, SONMESAJ)
     # Yasaklama işlemini günlüğe belirtelim
     if BOTLOG:
         await bon.client.send_message(
@@ -455,10 +469,12 @@ async def nothanos(unbon):
 
     if not admin and not creator:
         await unbon.edit(NO_ADMIN)
+        await unbon.client.send_message(unbon.chat_id, NO_ADMIN)
         return
 
     # Her şey yolunda giderse...
     await unbon.edit(LANG['UNBANNING'])
+    await unbon.client.send_message(unbon.chat_id, LANG['UNBANNING'])
 
     user = await get_user_from_event(unbon)
     user = user[0]
@@ -479,6 +495,15 @@ async def nothanos(unbon):
             date = datetime.datetime.strftime(datetime.datetime.now(), '%c'),
             count = (chat.participants_count) if chat.participants_count else 'Bilinmiyor'
         ))
+        await unbon.client.send_message(unbon.chat_id, LANG['UNBANNED'].format(
+            id = user.id,
+            username = '@' + user.username if user.username else f"[{user.first_name}](tg://user?id={user.id})",
+            first_name = user.first_name,
+            last_name = '' if not user.last_name else user.last_name,
+            mention = f"[{user.first_name}](tg://user?id={user.id})",
+            date = datetime.datetime.strftime(datetime.datetime.now(), '%c'),
+            count = (chat.participants_count) if chat.participants_count else 'Bilinmiyor'
+        ))
 
         if BOTLOG:
             await unbon.client.send_message(
@@ -487,6 +512,7 @@ async def nothanos(unbon):
                 f"GRUP: {unbon.chat.title}(`{unbon.chat_id}`)")
     except:
         await unbon.edit(LANG['EXCUSE_ME_WTF'])
+        await unbon.client.send_message(unbon.chat_id, LANG['EXCUSE_ME_WTF'])
 
 
 @register(outgoing=True, pattern="^.mute(?: |$)(.*)")
@@ -500,6 +526,7 @@ async def spider(spdr):
         from userbot.modules.sql_helper.spam_mute_sql import mute
     except:
         await spdr.edit(NO_SQL)
+        await spdr.client.send_message(spdr.chat_id, NO_SQL)
         return
 
     # Yetki kontrolü
@@ -510,6 +537,7 @@ async def spider(spdr):
     # Yönetici değil ise geri dön
     if not admin and not creator:
         await spdr.edit(NO_ADMIN)
+        await spdr.client.send_message(spdr.chat_id, NO_ADMIN)
         return
 
     user, reason = await get_user_from_event(spdr)
@@ -523,6 +551,7 @@ async def spider(spdr):
         await spdr.edit(
             LANG['BRAIN']
         )
+        await spdr.client.send_message(spdr.chat_id, LANG['BRAIN'])
         return
 
     self_user = await spdr.client.get_me()
@@ -530,11 +559,14 @@ async def spider(spdr):
     if user.id == self_user.id:
         await spdr.edit(
             LANG['NO_MUTE_ME'])
+        await spdr.client.send_message(spdr.chat_id, LANG['NO_MUTE_ME'])
         return
 
     # Hedefi sustaracağınızı duyurun
     await spdr.edit(LANG['MUTING'])
+    await spdr.client.send_message(spdr.chat_id, LANG['MUTING'])
     if mute(spdr.chat_id, user.id) is False:
+        await spdr.client.send_message(spdr.chat_id, LANG['ALREADY_MUTED'])
         return await spdr.edit(LANG['ALREADY_MUTED'])
     else:
         try:
@@ -546,6 +578,7 @@ async def spider(spdr):
             await mutmsg(spdr, user, reason, chat)
         except:
             return await spdr.edit(LANG['WTF_MUTE'])
+            await spdr.client.send_message(spdr.chat_id, LANG['WTF_MUTE'])
 
 
 async def mutmsg(spdr, user, reason, chat):
@@ -585,6 +618,7 @@ async def unmoot(unmot):
     # Yönetici değil ise geri dön
     if not admin and not creator:
         await unmot.edit(NO_ADMIN)
+        await unmot.client.send_message(unmot.chat_id, NO_ADMIN)
         return
 
     # Fonksiyonun SQL modu altında çalışıp çalışmadığını kontrol et
@@ -592,9 +626,11 @@ async def unmoot(unmot):
         from userbot.modules.sql_helper.spam_mute_sql import unmute
     except:
         await unmot.edit(NO_SQL)
+        await unmot.client.send_message(unmot.chat_id, NO_SQL)
         return
 
     await unmot.edit(LANG['UNMUTING'])
+    await unmot.client.send_message(unmot.chat_id, LANG['UNMUTING'])
     user = await get_user_from_event(unmot)
     user = user[0]
     if user:
@@ -603,6 +639,7 @@ async def unmoot(unmot):
         return
 
     if unmute(unmot.chat_id, user.id) is False:
+        await unmot.client.send_message(unmot.chat_id, LANG['ALREADY_UNMUTED'])
         return await unmot.edit(LANG['ALREADY_UNMUTED'])
     else:
 
@@ -618,6 +655,16 @@ async def unmoot(unmot):
             date = datetime.datetime.strftime(datetime.datetime.now(), '%c'),
             count = (chat.participants_count) if chat.participants_count else 'Bilinmiyor'
         ))
+            await unmot.client.send_message(unmot.chat_id, LANG['UNMUTED'].format(
+            id = user.id,
+            username = '@' + user.username if user.username else f"[{user.first_name}](tg://user?id={user.id})",
+            first_name = user.first_name,
+            last_name = '' if not user.last_name else user.last_name,
+            mention = f"[{user.first_name}](tg://user?id={user.id})",
+            date = datetime.datetime.strftime(datetime.datetime.now(), '%c'),
+            count = (chat.participants_count) if chat.participants_count else 'Bilinmiyor'
+        ))
+
         except UserAdminInvalidError:
             await unmot.edit(LANG['UNMUTED'].format(
             id = user.id,
@@ -630,6 +677,7 @@ async def unmoot(unmot):
         ))
         except:
             await unmot.edit(LANG['WTF_MUTE'])
+            await unmot.client.send_message(unmot.chat_id, LANG['WTF_MUTE'])
             return
 
         if BOTLOG:
@@ -685,6 +733,7 @@ async def ungmoot(un_gmute):
     # Yönetici değil ise geri dön
     if not admin and not creator:
         await un_gmute.edit(NO_ADMIN)
+        await un_gmute.client.send_message(un_gmute.chat_id, NO_ADMIN)
         return
 
     # Fonksiyonun SQL modu altında çalışıp çalışmadığını kontrol et
@@ -692,6 +741,7 @@ async def ungmoot(un_gmute):
         from userbot.modules.sql_helper.gmute_sql import ungmute
     except:
         await un_gmute.edit(NO_SQL)
+        await un_gmute.client.send_message(un_gmute.chat_id, NO_SQL)
         return
 
     user = await get_user_from_event(un_gmute)
@@ -702,12 +752,15 @@ async def ungmoot(un_gmute):
         return
 
     await un_gmute.edit(LANG['GUNMUTING'])
+    await un_gmute.client.send_message(un_gmute.chat_id, LANG['GUNMUTING'])
 
     if ungmute(user.id) is False:
         await un_gmute.edit(LANG['NO_GMUTE'])
+        await un_gmute.client.send_message(un_gmute.chat_id, LANG['NO_GMUTE'])
     else:
         # Başarı olursa bilgi ver
         await un_gmute.edit(LANG['UNMUTED'])
+        await un_gmute.client.send_message(un_gmute.chat_id, LANG['UNMUTED'])
 
         if BOTLOG:
             await un_gmute.client.send_message(
@@ -728,6 +781,7 @@ async def gspider(gspdr):
     # Yönetici değil ise geri dön
     if not admin and not creator:
         await gspdr.edit(NO_ADMIN)
+        await gspdr.client.send_message(gspdr.chat_id, NO_ADMIN)
         return
 
     # Fonksiyonun SQL modu altında çalışıp çalışmadığını kontrol et
@@ -735,6 +789,7 @@ async def gspider(gspdr):
         from userbot.modules.sql_helper.gmute_sql import gmute
     except:
         await gspdr.edit(NO_SQL)
+        await gspdr.client.send_message(gspdr.chat_id, NO_SQL)
         return
 
     user, reason = await get_user_from_event(gspdr)
@@ -746,18 +801,23 @@ async def gspider(gspdr):
     # Eğer kullanıcı sudo ise
     if user.id in WHITELIST:
         await gspdr.edit(LANG['BRAIN'])
+        await gspdr.client.send_message(gspdr.chat_id, LANG['BRAIN'])
         return
 
     # Başarı olursa bilgi ver
     await gspdr.edit(LANG['GMUTING'])
+    await gspdr.client.send_message(gspdr.chat_id, LANG['GMUTING'])
     if gmute(user.id) == False:
         await gspdr.edit(
             LANG['ALREADY_GMUTED'])
+        await gspdr.client.send_message(gspdr.chat_id, LANG['ALREADY_GMUTED'])
     else:
         if reason:
             await gspdr.edit(f"{LANG['GMUTED']} {LANG['REASON']}: {reason}")
+            await gspdr.client.send_message(gspdr.chat_id, f"{LANG['GMUTED']} {LANG['REASON']}: {reason}")
         else:
             await gspdr.edit(LANG['GMUTED'])
+            await gspdr.client.send_message(gspdr.chat_id, LANG['GMUTED'])
 
         if BOTLOG:
             await gspdr.client.send_message(
@@ -864,12 +924,14 @@ async def pin(msg):
     # Yönetici değil ise geri dön
     if not admin and not creator:
         await msg.edit(NO_ADMIN)
+        await msg.client.send_message(msg.chat_id, NO_ADMIN)
         return
 
     to_pin = msg.reply_to_msg_id
 
     if not to_pin:
         await msg.edit(LANG['NEED_MSG'])
+        await msg.client.send_message(msg.chat_id, LANG['NEED_MSG'])
         return
 
     options = msg.pattern_match.group(1)
@@ -884,9 +946,11 @@ async def pin(msg):
             UpdatePinnedMessageRequest(msg.to_id, to_pin, is_silent))
     except:
         await msg.edit(NO_PERM)
+        await msg.client.send_message(msg.chat_id, NO_PERM)
         return
 
     await msg.edit(LANG['PINNED'])
+    await msg.client.send_message(msg.chat_id, LANG['PINNED'])
 
     user = await get_user_from_id(msg.from_id, msg)
 
@@ -910,11 +974,13 @@ async def kick(usr):
     # Yönetici değil ise geri dön
     if not admin and not creator:
         await usr.edit(NO_ADMIN)
+        await usr.client.send_message(usr.chat_id, NO_ADMIN)
         return
 
     user, reason = await get_user_from_event(usr)
     if not user:
         await usr.edit(LANG['NOT_FOUND'])
+        await usr.client.send_message(usr.chat_id, LANG['NOT_FOUND'])
         return
 
     # Eğer kullanıcı sudo ise
@@ -922,24 +988,30 @@ async def kick(usr):
         await usr.edit(
             LANG['BRAIN']
         )
+        await usr.client.send_message(usr.chat_id, LANG['BRAIN'])
         return
 
     await usr.edit(LANG['KICKING'])
+    await usr.client.send_message(usr.chat_id, LANG['KICKING'])
 
     try:
         await usr.client.kick_participant(usr.chat_id, user.id)
         await sleep(.5)
     except Exception as e:
         await usr.edit(NO_PERM + f"\n{str(e)}")
+        await usr.client.send_message(usr.chat_id, NO_PERM + f"\n{str(e)}")
+
         return
 
     if reason:
         await usr.edit(
             f"[{user.first_name}](tg://user?id={user.id}) `{LANG['KICKED']}`\n{LANG['REASON']}: {reason}"
         )
+        await usr.client.send_message(usr.chat_id, f"[{user.first_name}](tg://user?id={user.id}) `{LANG['KICKED']}`\n{LANG['REASON']}: {reason}")
     else:
         await usr.edit(
             f"[{user.first_name}](tg://user?id={user.id}) `{LANG['KICKED']}`")
+        await usr.client.send_message(usr.chat_id, f"[{user.first_name}](tg://user?id={user.id}) `{LANG['KICKED']}`")
 
     if BOTLOG:
         await usr.client.send_message(
