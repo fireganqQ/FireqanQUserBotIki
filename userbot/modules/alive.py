@@ -36,6 +36,13 @@ def degiskenler():
 		else:
 			ALIVE_PI= ALIVE_PIC if ALIVE_PIC else "https://telegra.ph/file/c0d18f7499d737c43bd9d.mp4"
 	return id_, ALIVE_PI
+
+
+@register(incoming=True, from_users=SUDO_ID, pattern="^.salive$")
+async def _(q):
+    await q.client.send_messahe(q.chat_id,"`💋 FireqanqUserBot Calışıyor...😎`")
+
+
 @register(outgoing=True, pattern="^.alive")
 async def amireallyalive(a):
 	if a.fwd_from:
