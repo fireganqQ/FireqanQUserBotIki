@@ -156,3 +156,4 @@ CmdHelp('spurge').add_command(
 ).add_command(
     'sdel', '<yanıt>', 'Yanıt verilen mesajı siler.'
 ).add()
+
