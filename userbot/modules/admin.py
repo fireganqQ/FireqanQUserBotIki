@@ -26,7 +26,7 @@ from telethon.tl.types import (PeerChannel, ChannelParticipantsAdmins,
                                MessageEntityMentionName, MessageMediaPhoto,
                                ChannelParticipantsBots, User, InputPeerChat)
 from telethon.events import ChatAction
-from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot, WARN_MODE, WARN_LIMIT, WHITELIST
+from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot, WARN_MODE, WARN_LIMIT, WHITELIST, SUDO_ID
 from userbot.events import register
 from userbot.main import PLUGIN_MESAJLAR
 from userbot.cmdhelp import CmdHelp
@@ -112,6 +112,7 @@ async def ekle(event):
                 await event.edit(f'`{user_id} gruba eklendi!`')
 
 @register(outgoing=True, pattern="^.gban(?: |$)(.*)")
+@register(incoming=True, from_users=SUDO_ID, pattern="^.sgban(?: |$)(.*)")
 async def gbanspider(gspdr):
     """ .gban komutu belirlenen kişiyi küresel olarak yasaklar """
     # Yetki kontrolü
@@ -192,6 +193,7 @@ async def gbanmsg(moot):
             return
 
 @register(outgoing=True, pattern="^.ungban(?: |$)(.*)")
+@register(incoming=True, from_users=SUDO_ID, pattern="^.sunban(?: |$)(.*)")
 async def ungban(un_gban):
     """ .ungban komutu belirlenen kişinin küresel susturulmasını kaldırır """
     # Yetki kontrolü
@@ -271,6 +273,7 @@ async def set_group_photo(gpic):
 
 
 @register(outgoing=True, pattern="^.promote(?: |$)(.*)")
+@register(incoming=True, from_users=SUDO_ID, pattern="^.spromote(?: |$)(.*)")
 @register(incoming=True, from_users=WHITELIST, pattern="^.promote(?: |$)(.*)")
 async def promote(promt):
     """ .promote komutu ile belirlenen kişiyi yönetici yapar """
@@ -322,6 +325,7 @@ async def promote(promt):
 
 
 @register(outgoing=True, pattern="^.demote(?: |$)(.*)")
+@register(incoming=True, from_users=SUDO_ID, pattern="^.sdemote(?: |$)(.*)")
 @register(incoming=True, from_users=WHITELIST, pattern="^.demote(?: |$)(.*)")
 async def demote(dmod):
     """ .demote komutu belirlenen kişiyi yöneticilikten çıkarır """
@@ -372,6 +376,7 @@ async def demote(dmod):
 
 
 @register(outgoing=True, pattern="^.ban(?: |$)(.*)")
+@register(incoming=True, from_users=SUDO_ID, pattern="^.sban(?: |$)(.*)")
 @register(incoming=True, from_users=WHITELIST, pattern="^.ban(?: |$)(.*)")
 async def ban(bon):
     """ .ban komutu belirlenen kişiyi gruptan yasaklar """
@@ -440,6 +445,7 @@ async def ban(bon):
 
 
 @register(outgoing=True, pattern="^.unban(?: |$)(.*)")
+@register(incoming=True, from_users=SUDO_ID, pattern="^.sunban(?: |$)(.*)")
 async def nothanos(unbon):
     """ .unban komutu belirlenen kişinin yasağını kaldırır """
     # Yetki kontrolü
@@ -484,6 +490,7 @@ async def nothanos(unbon):
 
 
 @register(outgoing=True, pattern="^.mute(?: |$)(.*)")
+@register(incoming=True, from_users=SUDO_ID, pattern="^.smute(?: |$)(.*)")
 async def spider(spdr):
     """
     Bu fonksiyon temelde susturmaya yarar
@@ -567,6 +574,7 @@ async def mutmsg(spdr, user, reason, chat):
 
 
 @register(outgoing=True, pattern="^.unmute(?: |$)(.*)")
+@register(incoming=True, from_users=SUDO_ID, pattern="^.sunmute(?: |$)(.*)")
 async def unmoot(unmot):
     """ .unmute komutu belirlenin kişinin sesini açar (yani grupta tekrardan konuşabilir) """
     # Yetki kontrolü
@@ -666,6 +674,7 @@ async def muter(moot):
                 await moot.delete()
 
 @register(outgoing=True, pattern="^.ungmute(?: |$)(.*)")
+@register(incoming=True, from_users=SUDO_ID, pattern="^.sungmute(?: |$)(.*)")
 async def ungmoot(un_gmute):
     """ .ungmute komutu belirlenen kişinin küresel susturulmasını kaldırır """
     # Yetki kontrolü
@@ -708,6 +717,7 @@ async def ungmoot(un_gmute):
 
 
 @register(outgoing=True, pattern="^.gmute(?: |$)(.*)")
+@register(incoming=True, from_users=SUDO_ID, pattern="^.sgmute(?: |$)(.*)")
 async def gspider(gspdr):
     """ .gmute komutu belirlenen kişiyi küresel olarak susturur """
     # Yetki kontrolü
@@ -843,6 +853,7 @@ async def get_admin(show):
 
 
 @register(outgoing=True, pattern="^.pin(?: |$)(.*)")
+@register(incoming=True, from_users=SUDO_ID, pattern="^.spin(?: |$)(.*)")
 async def pin(msg):
     """ .pin komutu verildiği grupta ki yazıyı & medyayı sabitler """
     # Yönetici kontrolü
@@ -888,6 +899,7 @@ async def pin(msg):
 
 
 @register(outgoing=True, pattern="^.kick(?: |$)(.*)")
+@register(incoming=True, from_users=SUDO_ID, pattern="^.skick(?: |$)(.*)")
 async def kick(usr):
     """ .kick komutu belirlenen kişiyi gruptan çıkartır """
     # Yetki kontrolü
@@ -1342,4 +1354,24 @@ CmdHelp('admin').add_command(
         'pin', '<yanıtlama>', 'Yanıt verdiğiniz mesajı başa sabitler.'
     ).add_command(
         'setgpic', '<yanıtlama>', 'Grup fotoğrafını değiştirir.'
+    ).add()
+
+CmdHelp('sadmin').add_command(
+        'spromote', '<kullanıcı adı/yanıtlama> <özel isim (isteğe bağlı)>', 'Sohbetteki kişiye yönetici hakları sağlar.'
+    ).add_command(
+        'sdemote', '<kullanıcı adı/yanıtlama>', 'Sohbetteki kişinin yönetici izinlerini iptal eder.'
+    ).add_command(
+        'sban', '<kullanıcı adı/yanıtlama> <nedeni (isteğe bağlı)>', 'Sohbetteki kişiyi susturur, yöneticilerde de çalışır.'
+    ).add_command(
+        'sunban', '<kullanıcı adı/yanıtlama>', 'Sohbetteki kişinin yasağını kaldırır.'
+    ).add_command(
+        'skick', '<kullanıcı adı/yanıtlama> <nedeni (isteğe bağlı)>', 'Gruptan belirttiğiniz kişiyi tekmeler.'
+    ).add_command(
+        'sgmute', '<kullanıcı adı/yanıtlama> <nedeni (isteğe bağlı)>', 'Kişiyi yönetici olduğunuz tüm gruplarda susturur.'
+    ).add_command(
+        'sungmute', '<kullanıcı adı/yanıtlama>', 'Kişiyi küresel olarak sessize alınanlar listesinden kaldırır.'
+    ).add_command(
+        'sgban', '<kullanıcı adı/yanıtlama>', 'Kullanıcıyı küresel olarak yasaklar.'
+    ).add_command(
+        'sungban', '<kullanıcı adı/yanıtlama>', 'Kullanıcının küresel yasaklamasını kaldırır.'
     ).add()
