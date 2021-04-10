@@ -71,6 +71,8 @@ if not LANGUAGE in ["TR", "AZ", "DEFAULT"]:
 
 FİREQANQ_VERSION = "v1.20.14"
 
+BOT_NAME="fg"
+
 # Telegram API KEY ve HASH
 API_KEY = os.environ.get("API_KEY", None)
 API_HASH = os.environ.get("API_HASH", None)
