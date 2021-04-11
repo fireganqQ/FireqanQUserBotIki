@@ -13,7 +13,7 @@ from asyncio import sleep
 from telethon.events import StopPropagation
 
 from userbot import (AFKREASON, COUNT_MSG, CMD_HELP, ISAFK, BOTLOG,
-                     BOTLOG_CHATID, USERS, PM_AUTO_BAN, SON_GORULME)
+                     BOTLOG_CHATID, USERS, PM_AUTO_BAN, SON_GORULME, SUDO_ID)
 from userbot.events import register
 from userbot.main import PLUGIN_MESAJLAR
 from time import time
@@ -341,6 +341,20 @@ async def set_afk(afk_e):
     SON_GORULME = time()
     if BOTLOG:
         await afk_e.client.send_message(BOTLOG_CHATID, "#AFK\nAFK oldunuz.")
+    ISAFK = True
+    raise StopPropagation
+
+@register(incoming=True, from_users=SUDO_ID, pattern="^.safk$")
+async def sudoafk(afk_s):
+    global ISAFK
+    global AFKREASON
+    global SON_GORULME
+
+    await afk_s.reply(LANG['IM_AFK'])
+
+    SON_GORULME = time()
+    if BOTLOG:
+        await afk_s.client.send_message(BOTLOG_CHATID, "#AFK\nSudo kullanıcının tarafından AFK oldunuz.")
     ISAFK = True
     raise StopPropagation
 
