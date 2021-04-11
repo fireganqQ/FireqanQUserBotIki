@@ -40,7 +40,7 @@ def degiskenler():
 
 @register(incoming=True, from_users=SUDO_ID, pattern="^.salive$")
 async def _(q):
-    await q.client.send_messahe(q.chat_id,"`💋 FireqanqUserBot Calışıyor...😎`")
+    await q.client.send_message(q.chat_id,"`💋 FireqanqUserBot Calışıyor...😎`")
 
 
 @register(outgoing=True, pattern="^.alive")
