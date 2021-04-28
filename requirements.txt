@@ -15,7 +15,6 @@ googletrans
 google-trans-new
 google_images_download>=2.7.1
 gTTS
-gTTS-token
 hachoir
 httplib2
 humanize
