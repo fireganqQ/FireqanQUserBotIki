@@ -1,4 +1,5 @@
 aiohttp
+pyttsx3
 aria2p
 async_generator
 bs4
