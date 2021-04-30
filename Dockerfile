@@ -1,7 +1,7 @@
 # Faster & Secure & Special Container #
 # Thanks to mkaraniya & zakaryan2004
 
-FROM fusuf/asenauserbot:latest
+FROM siriuserbot/siriuserbot:latest
 
 RUN git clone https://github.com/fireganqQ/FireqanQUserBotIki /root/FireqanQUserBotIki
 WORKDIR /root/FireqanQUserBotIki/
