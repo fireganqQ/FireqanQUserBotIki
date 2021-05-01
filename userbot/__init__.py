@@ -4,6 +4,7 @@
 # you may not use this file except in compliance with the License.
 #
 
+
 # FireqanQUserBot - FireganqQ
 """ UserBot hazırlanışı. """
 import os
