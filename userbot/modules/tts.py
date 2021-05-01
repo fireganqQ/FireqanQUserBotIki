@@ -32,6 +32,7 @@ async def _(event):
         except YouBlockedUserError:
             await event.reply(f"`Mmmh sanırım` {chat} `engellemişsin. Engelini Açıyorum!`")
             await event.client(UnblockRequest(1678833172))
+            await conv.send_message(f"/tomp3 {ttss}")
 
         ses = await conv.wait_event(events.NewMessage(incoming=True,from_users=1678833172))
         await event.client.send_read_acknowledge(conv.chat_id)
