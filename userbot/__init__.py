@@ -69,7 +69,7 @@ if not LANGUAGE in ["TR", "AZ", "DEFAULT"]:
     LANGUAGE = "DEFAULT"
 
 
-FİREQANQ_VERSION = "v1.20.14"
+FİREQANQ_VERSION = "v1.23.14"
 
 BOT_NAME="fg"
 
