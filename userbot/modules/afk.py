@@ -5,6 +5,7 @@
 #
 # FireqanQUserBot - FireganqQ
 
+
 """ AFK ile ilgili komutları içeren UserBot modülü """
 
 from random import randint
