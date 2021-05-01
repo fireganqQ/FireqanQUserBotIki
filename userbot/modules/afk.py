@@ -237,6 +237,12 @@ async def afk_on_pm(sender):
         last_seen_long = time_formatter(last_seen_seconds, False)
 
         if apprv and ISAFK:
+            if BOTLOG:
+                try:
+                    reply = await sender.client.send_message(BOTLOG_CHATID, f"__Siz Afk İken Mesaj Gönderdi:__\n**Kullanıcı:** {mention}\n↘️ **Mesaj** ↙️")
+                    await reply.reply(sender.text)
+                except:
+                    pass
             if sender.sender_id not in USERS:
                 if AFKREASON:
                     await sender.reply(LANG['AFK'].format(
@@ -249,13 +255,6 @@ async def afk_on_pm(sender):
                         last_seen_long=last_seen_long
                     ) \
                     + f"\n{LANG['REASON']}: `{AFKREASON}`")
-
-                    if BOTLOG:
-                        try:
-                            reply = await mention.client.send_message(BOTLOG_CHATID, f"__Siz Afk İken Mesaj Gönderdi:__\n**Kullanıcı:** {mention}\n↘️ **Mesaj** ↙️")
-                            await reply.reply(mention.text)
-                        except:
-                            pass
                 else:
                     if not isinstance(PLUGIN_MESAJLAR['afk'], str):
                         PLUGIN_MESAJLAR['afk'].text = PLUGIN_MESAJLAR['afk'].text.format(
@@ -268,12 +267,6 @@ async def afk_on_pm(sender):
                             last_seen_long=last_seen_long
                         )
                         await sender.reply(PLUGIN_MESAJLAR['afk'])
-                        if BOTLOG:
-                            try:
-                                reply = await mention.client.send_message(BOTLOG_CHATID, f"__Siz Afk İken Mesaj Gönderdi:__\n**Kullanıcı:** {mention}\n↘️ **Mesaj** ↙️")
-                                await reply.reply(mention.text)
-                            except:
-                                pass
                     else:
                         await sender.reply(PLUGIN_MESAJLAR['afk'].format(
                             username=username,
@@ -284,12 +277,6 @@ async def afk_on_pm(sender):
                             last_seen=last_seen,
                             last_seen_long=last_seen_long
                         ))
-                        if BOTLOG:
-                            try:
-                                reply = await mention.client.send_message(BOTLOG_CHATID, f"__Siz Afk İken Mesaj Gönderdi:__\n**Kullanıcı:** {mention}\n↘️ **Mesaj** ↙️")
-                                await reply.reply(mention.text)
-                            except:
-                                pass
 
                 USERS.update({sender.sender_id: 1})
                 COUNT_MSG = COUNT_MSG + 1
@@ -307,21 +294,9 @@ async def afk_on_pm(sender):
                                 last_seen_long=last_seen_long
                             ) \
                             + f"\n{LANG['REASON']}: `{AFKREASON}`")
-                            if BOTLOG:
-                                try:
-                                    reply = await mention.client.send_message(BOTLOG_CHATID, f"__Siz Afk İken Mesaj Gönderdi:__\n**Kullanıcı:** {mention}\n↘️ **Mesaj** ↙️")
-                                    await reply.reply(mention.text)
-                                except:
-                                    pass
                         else:
                             msj = await sender.reply(PLUGIN_MESAJLAR['afk'])
                             await msj.reply(f"{LANG['REASON']}: `{AFKREASON}`")
-                            if BOTLOG:
-                                try:
-                                    reply = await mention.client.send_message(BOTLOG_CHATID, f"__Siz Afk İken Mesaj Gönderdi:__\n**Kullanıcı:** {mention}\n↘️ **Mesaj** ↙️")
-                                    await reply.reply(mention.text)
-                                except:
-                                    pass
                     else:
                         if not isinstance(PLUGIN_MESAJLAR['afk'], str):
                             PLUGIN_MESAJLAR['afk'].text = PLUGIN_MESAJLAR['afk'].text.format(
@@ -335,12 +310,6 @@ async def afk_on_pm(sender):
                             )
 
                             await sender.reply(PLUGIN_MESAJLAR['afk'])
-                            if BOTLOG:
-                                try:
-                                    reply = await mention.client.send_message(BOTLOG_CHATID, f"__Siz Afk İken Mesaj Gönderdi:__\n**Kullanıcı:** {mention}\n↘️ **Mesaj** ↙️")
-                                    await reply.reply(mention.text)
-                                except:
-                                    pass
                         else:
                             await sender.reply(PLUGIN_MESAJLAR['afk'].format(
                                 username=username,
@@ -351,12 +320,6 @@ async def afk_on_pm(sender):
                                 last_seen=last_seen,
                                 last_seen_long=last_seen_long
                             ))
-                            if BOTLOG:
-                                try:
-                                    reply = await mention.client.send_message(BOTLOG_CHATID, f"__Siz Afk İken Mesaj Gönderdi:__\n**Kullanıcı:** {mention}\n↘️ **Mesaj** ↙️")
-                                    await reply.reply(mention.text)
-                                except:
-                                    pass
 
                     USERS[sender.sender_id] = USERS[sender.sender_id] + 1
                     COUNT_MSG = COUNT_MSG + 1
