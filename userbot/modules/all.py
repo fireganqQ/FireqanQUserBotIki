@@ -90,7 +90,7 @@ async def _(q):
 		if allLimit > 100:
 			sleep(2)
 
-@r(pattern="^.allstop$")
+@r(outgoing=True, pattern="^.allstop$")
 async def _(q):
 	global durDur
 	if allSorgu == None:
@@ -100,11 +100,11 @@ async def _(q):
 	durDur = True
 	await q.edit("`All Durduruldu!`")
 
-@r(pattern=".all[lL]imit (.*)$")
+@r(outgoing=True, pattern=".all[lL]imit(?: |$)(.*)$")
 async def _(q):
 	global allLimit
 	limit = q.pattern_match(1)
-	if limit == "":
+	if len(limit) < 1:
 		return await q.edit("`Lütfen Bana Bir İntager Değer Veriniz!!`")
 	try:
 		limit=int(limit)
