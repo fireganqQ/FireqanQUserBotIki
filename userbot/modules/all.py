@@ -103,11 +103,14 @@ async def _(q):
 @r(outgoing=True, pattern=".all[lL]imit(?: |$)(.*)$")
 async def _(q):
 	global allLimit
-	limit = q.pattern_match(1)
-	if len(limit) < 1:
+	if q.pattern_match.group(1):
+		pass
+
+	else:
 		return await q.edit("`Lütfen Bana Bir İntager Değer Veriniz!!`")
+
 	try:
-		limit=int(limit)
+		limit=int(q.pattern_match.group(1))
 	except:
 		await q.edit("`Lütfen Bana Bir İntager Değer Vermediniz!!`")
 		return
