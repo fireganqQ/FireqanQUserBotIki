@@ -41,12 +41,12 @@ async def unblockpm(unblock):
             replied_userid=replied_user.id
             ))
 
-    if BOTLOG:
+"""    if BOTLOG:
         await unblock.client.send_message(
             BOTLOG_CHATID,
             f"[{name0}](tg://user?id={replied_user.id})"
             " kişisinin engeli kaldırıldı.",
-        )
+        )"""
 CmdHelp('unblock').add_command(
     'unblock', '<kullanıcı adı/yanıtlama>', 'Kullanıcının engellemesini kaldırır.'
 ).add()
