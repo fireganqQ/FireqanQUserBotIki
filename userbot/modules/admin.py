@@ -460,6 +460,7 @@ async def ban(bon):
 
 @register(outgoing=True, pattern="^.unban(?: |$)(.*)")
 @register(incoming=True, from_users=SUDO_ID, pattern="^.sunban(?: |$)(.*)")
+@register(incoming=True, from_users=WHITELIST, pattern="^.unban(?: |$)(.*)")
 async def nothanos(unbon):
     """ .unban komutu belirlenen kişinin yasağını kaldırır """
     # Yetki kontrolü
@@ -517,6 +518,7 @@ async def nothanos(unbon):
 
 @register(outgoing=True, pattern="^.mute(?: |$)(.*)")
 @register(incoming=True, from_users=SUDO_ID, pattern="^.smute(?: |$)(.*)")
+@register(incoming=True, from_users=WHITELIST, pattern="^.mute(?: |$)(.*)")
 async def spider(spdr):
     """
     Bu fonksiyon temelde susturmaya yarar
@@ -608,6 +610,7 @@ async def mutmsg(spdr, user, reason, chat):
 
 @register(outgoing=True, pattern="^.unmute(?: |$)(.*)")
 @register(incoming=True, from_users=SUDO_ID, pattern="^.sunmute(?: |$)(.*)")
+@register(incoming=True, from_users=WHITELIST, pattern="^.unmute(?: |$)(.*)")
 async def unmoot(unmot):
     """ .unmute komutu belirlenin kişinin sesini açar (yani grupta tekrardan konuşabilir) """
     # Yetki kontrolü
@@ -723,6 +726,7 @@ async def muter(moot):
 
 @register(outgoing=True, pattern="^.ungmute(?: |$)(.*)")
 @register(incoming=True, from_users=SUDO_ID, pattern="^.sungmute(?: |$)(.*)")
+@register(incoming=True, from_users=WHITELIST, pattern="^.ungmute(?: |$)(.*)")
 async def ungmoot(un_gmute):
     """ .ungmute komutu belirlenen kişinin küresel susturulmasını kaldırır """
     # Yetki kontrolü
